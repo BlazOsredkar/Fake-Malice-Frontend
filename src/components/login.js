@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-
+import ScvLogo from '../style/school_logo.png';
 
 const Login = () => {
     const [userData, setUserData] = React.useState({})
@@ -23,8 +23,9 @@ const Login = () => {
   return (
       <div className="App">
 
-
+          <img src={ScvLogo} alt="logo" className="logo"/>
           <form onSubmit={handleSubmit}>
+
 
               <p>Email</p>
               <input type="email" className="inputEmail input" name="Email" placeholder="Email"/>
@@ -37,8 +38,6 @@ const Login = () => {
               <input className="submit" type="submit" value="Submit"/>
           </form>
 
-          <p>{userData.email}</p>
-          <p>{userData.name}</p>
 
       </div>
     );

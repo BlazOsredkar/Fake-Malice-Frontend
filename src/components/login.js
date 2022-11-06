@@ -22,23 +22,19 @@ const Login = () => {
     }
   return (
       <div className="App">
-
           <img src={ScvLogo} alt="logo" className="logo"/>
           <form onSubmit={handleSubmit}>
-
-
+              {/*Email*/}
               <p>Email</p>
               <input type="email" className="inputEmail input" name="Email" placeholder="Email"/>
               <br/>
-
+              {/*Password*/}
               <p>Geslo</p>
               <input type="password" className="input inputPassword" name="Password" placeholder="Geslo"/>
               <br/>
-
+              {/*Submit*/}
               <input className="submit" type="submit" value="Submit"/>
           </form>
-
-
       </div>
     );
 }

@@ -1,0 +1,58 @@
+.App{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    text-align: left;
+    width: 400px;
+    height: 400px;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 10px;
+
+}
+.submit{
+    margin-top: 20px;
+    margin-left: 5%;
+    margin-top: 40px;
+    width: 200px;
+    height: 40px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input{
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+}
+.inputEmail:active, .inputEmail:focus, .inputEmail:valid, .inputEmail{
+    background-image: url('mail.svg');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+}
+.inputPassword:active, .inputPassword:focus, .inputPassword:valid, .inputPassword{
+    background-image: url('lock.svg');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+}
+.login {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

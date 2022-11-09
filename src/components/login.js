@@ -26,14 +26,14 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
               {/*Email*/}
               <p>Email</p>
-              <input type="email" className="inputEmail input" name="Email" placeholder="Email"/>
+              <input type="email" className="inputEmail input" name="Email" placeholder="Email" required/>
               <br/>
               {/*Password*/}
               <p>Geslo</p>
-              <input type="password" className="input inputPassword" name="Password" placeholder="Geslo"/>
+              <input type="password" className="input inputPassword" name="Password" placeholder="Geslo" required/>
               <br/>
               {/*Submit*/}
-              <input className="submit" type="submit" value="Submit"/>
+              <div className="button"><input className="submit" type="submit" value="Prijava"/></div>
           </form>
       </div>
     );

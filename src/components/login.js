@@ -7,9 +7,9 @@ const Login = () => {
     async function handleSubmit(e){
         e.preventDefault();
         const formData = new FormData(e.target);
-        const email = formData.get("Email");
-        const password = formData.get("Password");
-        const response = await axios.post('http://localhost:5050/api/login', {email, password}, {withCredentials:true})
+        const eposta = formData.get("eposta");
+        const geslo = formData.get("geslo");
+        const response = await axios.post('http://localhost:5050/api/login', {eposta, geslo}, {withCredentials:true})
         console.log(response.data);
         console.log(response.status);
         if(response.status === 200){
@@ -26,11 +26,11 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
               {/*Email*/}
               <p>Email</p>
-              <input type="email" className="inputEmail input" name="Email" placeholder="Email" required/>
+              <input type="email" className="inputEmail input" name="eposta" placeholder="Email" required/>
               <br/>
               {/*Password*/}
               <p>Geslo</p>
-              <input type="password" className="input inputPassword" name="Password" placeholder="Geslo" required/>
+              <input type="password" className="input inputPassword" name="geslo" placeholder="Geslo" required/>
               <br/>
               {/*Submit*/}
               <div className="button"><input className="submit" type="submit" value="Prijava"/></div>

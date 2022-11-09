@@ -1,23 +1,24 @@
 import React from "react";
 import axios from "axios";
 import ScvLogo from '../style/school_logo.png';
+import {store} from "../app/store";
+import {userLogin} from "../auth/userSlice";
 
 const Login = () => {
-    const [userData, setUserData] = React.useState({})
     async function handleSubmit(e){
         e.preventDefault();
         const formData = new FormData(e.target);
         const eposta = formData.get("eposta");
         const geslo = formData.get("geslo");
         const response = await axios.post('http://localhost:5050/api/login', {eposta, geslo}, {withCredentials:true})
-        console.log(response.data);
-        console.log(response.status);
         if(response.status === 200){
             const odgovor = await axios.get('http://localhost:5050/api/user', {withCredentials:true});
             if(odgovor.status === 200){
-                setUserData(odgovor.data);
+                store.dispatch(userLogin(odgovor.data));
             }
         }
+        //store user data into redux
+
 
     }
   return (

@@ -5,6 +5,7 @@ import Login from "../components/login";
 import axios from "axios";
 import {store} from "./store";
 import {useEffect} from "react";
+import Loading from "../components/loading";
 
 const RequireAuth = () => {
 
@@ -29,7 +30,7 @@ const RequireAuth = () => {
         handleLoading();
     }, []);
     if(loading){
-        return <div>Loading...</div>
+        return <Loading/>
     }
     if(!user){
         return <Login/>

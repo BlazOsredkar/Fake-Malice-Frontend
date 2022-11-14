@@ -2,14 +2,17 @@ import React from "react";
 import axios from "axios";
 import ScvLogo from '../style/school_logo.png';
 import {store} from "../app/store";
-import {userLogin} from "../auth/userSlice";
+import {setUserLoading, userLogin} from "../auth/userSlice";
+import {useDispatch} from "react-redux";
 
 const Login = () => {
     async function handleSubmit(e){
         e.preventDefault();
+
         const formData = new FormData(e.target);
         const eposta = formData.get("eposta");
         const geslo = formData.get("geslo");
+        store.dispatch(setUserLoading(true));
         const response = await axios.post('http://localhost:5050/api/login', {eposta, geslo}, {withCredentials:true})
         if(response.status === 200){
             const odgovor = await axios.get('http://localhost:5050/api/user', {withCredentials:true});
@@ -17,8 +20,7 @@ const Login = () => {
                 store.dispatch(userLogin(odgovor.data));
             }
         }
-        //store user data into redux
-
+        store.dispatch(setUserLoading(false));
 
     }
   return (

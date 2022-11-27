@@ -3,6 +3,7 @@ import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 import "../style/calendarcss.css";
 import GlavniMeni from "../components/upperMenu";
+import KarticaMalica from "../components/karticaMalica";
 
 
 const Homepage = () => {
@@ -11,6 +12,7 @@ const Homepage = () => {
         <GlavniMeni/>
         <h1>Homepage</h1>
         <Calendar />
+        <KarticaMalica/>
     </div>
 
     );

@@ -15,11 +15,8 @@ const karticaMalica = () => {
         </div>
 
         <div className="karticaMalica__opis">
-            <h3>d</h3>
-            <p></p>
-        </div>
-        <div className="karticaMalica__cena">
-            <p>3.09</p>
+            <h3>Mesni Meni</h3>
+            <p>Mesna kroglica</p>
         </div>
 
     </div>

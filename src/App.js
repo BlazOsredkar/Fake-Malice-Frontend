@@ -3,10 +3,10 @@ import React  from "react";
 import "./style/homestyle.css";
 import Logout from "./components/logout";
 import {BrowserRouter, Route, Router, Routes} from "react-router-dom";
-import Homepage from "./pages/home";
+import Homepage from "./Pages/home";
 import RequireAuth from "./app/RequireAuth";
 import Loading from "./components/loading";
-import NotFoundPage from "./pages/404page/404";
+import NotFoundPage from "./Pages/404page/404";
 
 function App() {
 

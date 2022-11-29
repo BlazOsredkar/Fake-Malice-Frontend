@@ -9,13 +9,12 @@ import KarticaMalica from "../components/karticaMalica";
 const Homepage = () => {
   return (
     <div>
-        <GlavniMeni/>
-        <h1>Homepage</h1>
-        <Calendar />
-        <KarticaMalica/>
+      <GlavniMeni />
+      <h1>Homepage</h1>
+      <Calendar />
+      <KarticaMalica />
     </div>
-
-    );
+  );
 }
 
 export default Homepage;

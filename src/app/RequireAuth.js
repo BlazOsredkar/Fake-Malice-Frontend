@@ -1,7 +1,7 @@
 import {selectUser, selectUserLoading, setUserLoading, userLogin} from "../auth/userSlice";
 import {useSelector} from "react-redux";
 import {Outlet} from "react-router-dom";
-import Login from "../pages/login";
+import Login from "../Pages/login";
 import axios from "axios";
 import {store} from "./store";
 import {useEffect} from "react";

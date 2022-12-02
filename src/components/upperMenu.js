@@ -2,7 +2,16 @@ import React from "react";
 import "../style/upperMenu.css";
 import logo from "../assets/school_logo.png"
 
+const options = [
+    { value: 'chocolate', label: 'Profil' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+];
+
+
 const GlavniMeni = () => {
+
+    
 
     return (
       /*         <div className="upperMenu">
@@ -23,6 +32,8 @@ const GlavniMeni = () => {
                 </div>
             </div>
         </div> */
+
+    
 
       <div className="wrapper">
         <header>
@@ -59,6 +70,7 @@ const GlavniMeni = () => {
                     />
                   </a>
                 </div>
+                
               </ul>
             </div>
           </nav>

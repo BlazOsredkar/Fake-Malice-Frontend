@@ -36,13 +36,13 @@
     padding: 12px 20px 12px 40px;
 }
 .inputEmail:active, .inputEmail:focus, .inputEmail:valid, .inputEmail{
-    background-image: url('mail.svg');
+    background-image: url('../assets/mail.svg');
     background-position: 10px 10px;
     background-repeat: no-repeat;
     background-size: 20px 20px;
 }
 .inputPassword:active, .inputPassword:focus, .inputPassword:valid, .inputPassword{
-    background-image: url('lock.svg');
+    background-image: url('../assets/lock.svg');
     background-position: 10px 10px;
     background-repeat: no-repeat;
     background-size: 20px 20px;

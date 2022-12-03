@@ -1,40 +1,17 @@
 import React from "react";
 import "../style/upperMenu.css";
-import logo from "../assets/school_logo.png"
+import logo from "../assets/school_logo.png";
+import logoutIcon from "../assets/logoutIcon.png";
 
 const options = [
-    { value: 'chocolate', label: 'Profil' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
+  { value: "chocolate", label: "Profil" },
+  { value: "strawberry", label: "Strawberry" },
+  { value: "vanilla", label: "Vanilla" },
 ];
 
-
 const GlavniMeni = () => {
-
-    
-
-    return (
-      /*         <div className="upperMenu">
-            <div className="upperMenuLeft">
-                <div className="upperMenuLeftItem">
-                    <a href="/">Domov</a>
-                </div>
-                <div className="upperMenuLeftItem">
-                    <a href="/logout">Odjava</a>
-                </div>
-            </div>
-            <div className="upperMenuRight">
-                <div className="upperMenuRightItem">
-                    <a href="/profil">Profil</a>
-                </div>
-                <div className="upperMenuRightItem">
-                    <a href="/profil">Nastavitve</a>
-                </div>
-            </div>
-        </div> */
-
-    
-
+  return (
+    <>
       <div className="wrapper">
         <header>
           <nav>
@@ -42,11 +19,7 @@ const GlavniMeni = () => {
               <ul>
                 <div className="logo">
                   <a href="/">
-                    <img
-                      src={logo}
-                      alt="logo"
-                      className="logoMenu"
-                    />
+                    <img src={logo} alt="logo" className="logoMenu" />
                   </a>
                 </div>
                 <li>
@@ -58,28 +31,25 @@ const GlavniMeni = () => {
                 <li>
                   <a href="/profil">Nastavitve</a>
                 </li>
-                <li>
+                {/*  <li>
                   <a href="/logout">Odjava</a>
-                </li>
+                </li> */}
                 <div className="profile">
-                  <a href="/profile">
+                  <a href="/logout">
                     <img
-                      src="https://i.imgur.com/YcP0tik.jpeg"
+                      src={logoutIcon}
                       alt="profile"
                       className="profilepic"
                     />
                   </a>
                 </div>
-                
               </ul>
             </div>
           </nav>
         </header>
       </div>
-    );
-
-
-
-}
+    </>
+  );
+};
 
 export default GlavniMeni;

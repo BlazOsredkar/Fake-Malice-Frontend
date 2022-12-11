@@ -2,6 +2,7 @@ import React from "react";
 import "../style/upperMenu.css";
 import logo from "../assets/school_logo.png";
 import logoutIcon from "../assets/logoutIcon.png";
+import {Link} from "react-router-dom";
 
 const options = [
   { value: "chocolate", label: "Profil" },
@@ -18,30 +19,30 @@ const GlavniMeni = () => {
             <div className="menu">
               <ul>
                 <div className="logo">
-                  <a href="/">
+                  <Link to="/">
                     <img src={logo} alt="logo" className="logoMenu" />
-                  </a>
+                  </Link>
                 </div>
                 <li>
-                  <a href="/">Domov</a>
+                  <Link to="/">Domov</Link>
                 </li>
                 <li>
-                  <a href="/profil">Profil</a>
+                  <Link to="/profil">Profil</Link>
                 </li>
                 <li>
-                  <a href="/profil">Nastavitve</a>
+                  <Link to="/profil">Nastavitve</Link>
                 </li>
                 {/*  <li>
                   <a href="/logout">Odjava</a>
                 </li> */}
                 <div className="profile">
-                  <a href="/logout">
+                  <Link to="/logout">
                     <img
                       src={logoutIcon}
                       alt="profile"
                       className="profilepic"
                     />
-                  </a>
+                  </Link>
                 </div>
               </ul>
             </div>

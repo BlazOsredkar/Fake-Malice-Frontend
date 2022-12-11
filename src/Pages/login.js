@@ -13,13 +13,17 @@ const Login = () => {
         const eposta = formData.get("eposta");
         const geslo = formData.get("geslo");
         store.dispatch(setUserLoading(true));
-        const response = await axios.post('http://localhost:5050/api/login', {eposta, geslo}, {withCredentials:true})
-        if(response.status === 200){
-            const odgovor = await axios.get('http://localhost:5050/api/user', {withCredentials:true});
-            if(odgovor.status === 200){
-                store.dispatch(userLogin(odgovor.data));
+        try {
+            const response = await axios.post('http://localhost:5050/api/login', {eposta, geslo}, {withCredentials:true})
+
+            if(response.status === 200){
+                const odgovor = await axios.get('http://localhost:5050/api/user', {withCredentials:true});
+                if(odgovor.status === 200){
+                    store.dispatch(userLogin(odgovor.data));
+                }
             }
         }
+        catch (e) {}
         store.dispatch(setUserLoading(false));
 
     }

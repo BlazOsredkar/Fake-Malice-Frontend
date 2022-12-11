@@ -5,6 +5,7 @@ import "../style/calendarcss.css";
 import "../style/homepage.css";
 import GlavniMeni from "../components/upperMenu";
 import KarticaMalica from "../components/karticaMalica";
+import SelectMenu from "../components/selectMenu";
 
 
 const Homepage = () => {
@@ -12,8 +13,7 @@ const Homepage = () => {
     <>
       <GlavniMeni />
       <div className="main">
-        <Calendar />
-        <KarticaMalica />
+        <SelectMenu />
       </div>
     </>
   );

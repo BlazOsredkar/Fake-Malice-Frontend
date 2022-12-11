@@ -19,7 +19,10 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/loading" element={<Loading />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin" element={<AdminPage />} >
+            <Route path="/admin/" element={<div>Admin</div>} />
+        </Route>
+
       </Routes>
     </BrowserRouter>
   );

@@ -29,13 +29,12 @@ const RequireAuth = () => {
     useEffect(() => {
         handleLoading();
     }, []);
-    if(loading){
-        return <Loading/>
-    }
-    if(!user){
-        return <Login/>
-    }
-    return <Outlet/>
+
+    return (
+        <>
+            {loading ? <Loading/> : (user ? <Outlet/> : <Login/>)}
+        </>
+    );
 }
 
 export default RequireAuth;

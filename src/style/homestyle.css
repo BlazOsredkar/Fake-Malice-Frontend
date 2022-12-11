@@ -59,10 +59,6 @@
     position: absolute;
     left: 50%;
     margin-bottom: 20px;
-    transform: translate(-50%, -10%);
-
-}
-
-.PozabilGeslo{
+    transform: translate(-50%, -20%);
 
 }

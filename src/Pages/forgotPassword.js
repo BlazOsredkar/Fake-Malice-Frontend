@@ -35,14 +35,12 @@ const ForgotPassword = () => {
             <div className="App">
                 <img src={ScvLogo} alt="logo" className="logo"/>
                 <form onSubmit={handleSubmit}>
+                    {/*Email*/}
+                    <p>Email</p>
                     <input type="email" className="inputEmail input" name="eposta" placeholder="Email" required/>
                     <input type="submit" className="submit" value="Pošlji"/>
                 </form>
-
-
-
             </div>
-
         </>
 
 

@@ -43,7 +43,7 @@ const Login = () => {
               <br/>
               {/*Submit*/}
               <div className="button"><input className="submit" type="submit" value="Prijava"/></div>
-              <Link to="/forgotPassword" className="PozabilGeslo">Pozabljeno geslo?</Link>
+              {/*<Link to="/forgotPassword" className="PozabilGeslo">Pozabljeno geslo?</Link>*/}
           </form>
 
       </div>

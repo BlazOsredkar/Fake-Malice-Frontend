@@ -58,7 +58,11 @@
 .button {
     position: absolute;
     left: 50%;
+    margin-bottom: 20px;
+    transform: translate(-50%, -10%);
 
-    transform: translate(-50%, -20%);
+}
+
+.PozabilGeslo{
 
 }

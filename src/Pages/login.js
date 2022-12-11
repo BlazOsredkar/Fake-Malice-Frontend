@@ -4,6 +4,7 @@ import ScvLogo from '../style/school_logo.png';
 import {store} from "../app/store";
 import {setUserLoading, userLogin} from "../auth/userSlice";
 import {useDispatch} from "react-redux";
+import {Link} from "react-router-dom";
 
 const Login = () => {
     async function handleSubmit(e){
@@ -28,6 +29,7 @@ const Login = () => {
 
     }
   return (
+      <>
       <div className="App">
           <img src={ScvLogo} alt="logo" className="logo"/>
           <form onSubmit={handleSubmit}>
@@ -41,10 +43,12 @@ const Login = () => {
               <br/>
               {/*Submit*/}
               <div className="button"><input className="submit" type="submit" value="Prijava"/></div>
+              <Link to="/forgotPassword" className="PozabilGeslo">Pozabljeno geslo?</Link>
           </form>
 
-
       </div>
+
+      </>
     );
 }
 export default Login;

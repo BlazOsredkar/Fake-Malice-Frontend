@@ -8,6 +8,7 @@ import RequireAuth from "./app/RequireAuth";
 import Loading from "./components/loading";
 import NotFoundPage from "./Pages/404page/404";
 import AdminPage from "./Pages/adminPage";
+import ForgotPassword from "./Pages/forgotPassword";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/admin" element={<AdminPage />} >
             <Route path="/admin/" element={<div>Admin</div>} />
         </Route>
+          <Route path="/forgotPassword" element={<ForgotPassword/>} />
 
       </Routes>
     </BrowserRouter>

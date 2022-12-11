@@ -1,9 +1,6 @@
 import React from "react";
 import axios from "axios";
-import ScvLogo from "../style/school_logo.png";
-import { store } from "../app/store";
-import { setUserLoading, userLogin } from "../auth/userSlice";
-import { useDispatch } from "react-redux";
+import NotFoundPage from "./404page/404";
 
 const AdminPage = () => {
   async function handleSubmit(e) {
@@ -13,16 +10,25 @@ const AdminPage = () => {
       withCredentials: true,
     });
     if (odgovor.data.isadmin === true) {
-      alert("Da");
+        return (
+            <div>
+                <h1>Admin Page</h1>
+                <p>Only Admins can see this page</p>
+            </div>
+        );
     } else {
-      alert("You are not an admin!");
+      return(
+          <NotFoundPage/>
+        );
     }
   }
   return (
-    <div>
-      <h1>Admin Page</h1>
-      <p>Only Admins can see this page</p>
-    </div>
+      /*Check if user is admin*/
+        <form onSubmit={handleSubmit}>
+            <div className="button">
+                <input className="submit" type="submit" value="Check if admin" />
+            </div>
+        </form>
   );
 };
 

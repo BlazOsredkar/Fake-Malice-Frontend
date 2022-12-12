@@ -27,9 +27,11 @@ export default function SelectMenu() {
     return (
         <>
             <Calendar onChange={setDate} value={date} />
+            <div className="kartice">
             {menus.map((menu) => (
                 <KarticaMalica key={menu.id} ime={menu.vrstaMenija.ime} opis={menu.opis} slika={menu.vrstaMenija.ikona} />
             ))}
+            </div>
         </>
     );
 }

@@ -7,11 +7,12 @@ const ForgotPassword = () => {
     //{emailExists ? <p>Na vaš email smo poslali povezavo za ponastavitev gesla.</p> : <p>Email ne obstaja.</p>}
     const [eposta, setEmail] = useState("");
     const [emailExists, setEmailExists] = useState(false);
+    let [userLoggedIn, setUserLoggedIn] = useState(false);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        
         const formData = new FormData(e.target);
         const eposta = formData.get("eposta");
         try {
@@ -25,6 +26,9 @@ const ForgotPassword = () => {
             setEmailExists(false);
             alert("Uporabnik s tem emailom ne obstaja.");
         }
+
+
+
 
     }
 

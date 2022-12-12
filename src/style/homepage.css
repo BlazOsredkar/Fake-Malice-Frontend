@@ -1,3 +1,9 @@
 .main{
     margin-top: 120px;
 }
+
+.kartice{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}

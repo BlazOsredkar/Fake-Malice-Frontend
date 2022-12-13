@@ -7,8 +7,11 @@ import Homepage from "./Pages/home";
 import RequireAuth from "./app/RequireAuth";
 import Loading from "./components/loading";
 import NotFoundPage from "./Pages/404page/404";
-import AdminPage from "./Pages/adminPage";
+import AdminChecker from "./Pages/adminChecker";
 import ForgotPassword from "./Pages/forgotPassword";
+import AdminMainPage from "./Pages/Admin/AdminMainPage";
+import AdminCreateUser from "./Pages/Admin/AdminCreateUser";
+import AdminCreateMeni from "./Pages/Admin/AdminCreateMeni";
 
 function App() {
   return (
@@ -20,8 +23,10 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/loading" element={<Loading />} />
-        <Route path="/admin" element={<AdminPage />} >
-            <Route path="/admin/" element={<div>Admin</div>} />
+        <Route path="/admin" element={<AdminChecker />} >
+            <Route path="/admin/" element={<AdminMainPage/>} />
+            <Route path="/admin/createUser" element={<AdminCreateUser/>} />
+            <Route path="/admin/createMeni" element={<AdminCreateMeni/>} />
         </Route>
           <Route path="/forgotPassword" element={<ForgotPassword/>} />
 

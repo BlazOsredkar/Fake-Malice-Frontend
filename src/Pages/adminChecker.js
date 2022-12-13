@@ -3,7 +3,7 @@ import axios from "axios";
 import NotFoundPage from "./404page/404";
 import {Outlet} from "react-router-dom";
 
-const AdminPage = () => {
+const AdminChecker = () => {
     const [isAdmin, setIsAdmin] = React.useState(false);
     const [isLoaded, setIsLoaded] = React.useState(false);
 
@@ -34,4 +34,4 @@ const AdminPage = () => {
 
 };
 
-export default AdminPage;
+export default AdminChecker;

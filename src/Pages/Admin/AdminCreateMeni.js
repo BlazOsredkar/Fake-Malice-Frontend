@@ -1,6 +1,7 @@
 import {useState} from "react";
 import axios from "axios";
 import React from "react";
+import "../../style/createMeni.css";
 
 
 
@@ -42,7 +43,7 @@ const AdminCreateMeni = () => {
             )
     }
 
-    
+
 
     React.useEffect(() => {
         getVrsteMenija();
@@ -53,20 +54,26 @@ const AdminCreateMeni = () => {
 
 
     return (
-        <div>
+        <div className="createMenu">
             <form onSubmit={handleSubmit}>
                 <label>Datum</label>
+                <br/>
                 <input type="date" name="datum" value={meni.datum} onChange={handleChange} required/>
+                <br/>
                 <label>Vrsta menija</label>
+                <br/>
                 <select name="vrstaMenija" value={meni.vrstaMenija} onChange={handleChange} required>
                     <option value="" disabled selected hidden>Izberi vrsto menija</option>
                     {vrstaMenija && vrstaMenija.map((vrstaMenija) => (
                         <option value={vrstaMenija.id}>{vrstaMenija.ime}</option>
                     ))}
                 </select>
+                <br/>
                 <label>Opis</label>
+                <br/>
                 <input type="text" name="opis" value={meni.opis} onChange={handleChange} required/>
-                <button type="submit">Submit</button>
+                <br/>
+                <button type="submit" className="submit">Submit</button>
             </form>
         </div>
     )

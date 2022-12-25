@@ -5,14 +5,20 @@ import ScvLogo from "../style/school_logo.png";
 const ForgotPassword = () => {
     //check if mail exists in database
     //{emailExists ? <p>Na vaš email smo poslali povezavo za ponastavitev gesla.</p> : <p>Email ne obstaja.</p>}
-    const [eposta, setEmail] = useState("");
+    // This code is used to check if the email that the user entered already exists in the database.
+// If it does, then the user will be notified that the email exists already.
+// It will then show the user the login page, where he/she can login with the existing email.
+// It will also check if the user is logged in. If the user is logged in, then the user will be redirected to the home page.
+// If the user is not logged in, then the user will be redirected to the login page.
+
+const [eposta, setEmail] = useState("");
     const [emailExists, setEmailExists] = useState(false);
     let [userLoggedIn, setUserLoggedIn] = useState(false);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         const formData = new FormData(e.target);
         const eposta = formData.get("eposta");
         try {

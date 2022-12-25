@@ -42,13 +42,13 @@ const AdminCreateUser = () => {
                 <label>E-pošta</label>
                 <input type="text" name="eposta" value={user.eposta} onChange={handleChange} required/>
                 <label>Geslo</label>
-                <input type="text" name="geslo" value={user.geslo} onChange={handleChange} required/>
+                <input type="password" name="geslo" value={user.geslo} onChange={handleChange} required/>
                 <label>EMŠO</label>
                 <input type="text" name="emso" value={user.emso} onChange={handleChange} required/>
                 <label>Davčna številka</label>
                 <input type="text" name="davcna" value={user.davcna} onChange={handleChange} required/>
                 <label>Datum rojstva</label>
-                <input type="text" name="datumroj" value={user.datumroj} onChange={handleChange} required/>
+                <input type="date" name="datumroj" value={user.datumroj} onChange={handleChange} required/>
                 <label>Telefon</label>
                 <input type="text" name="telefon" value={user.telefon} onChange={handleChange} required/>
 

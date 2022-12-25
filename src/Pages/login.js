@@ -5,6 +5,7 @@ import {store} from "../app/store";
 import {setUserLoading, userLogin} from "../auth/userSlice";
 import {useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
+import {backendAPIendpoint} from "../App";
 
 const Login = () => {
     async function handleSubmit(e){
@@ -15,10 +16,10 @@ const Login = () => {
         const geslo = formData.get("geslo");
         store.dispatch(setUserLoading(true));
         try {
-            const response = await axios.post('http://localhost:5050/api/login', {eposta, geslo}, {withCredentials:true})
+            const response = await axios.post(`${backendAPIendpoint}/login`, {eposta, geslo}, {withCredentials:true})
 
             if(response.status === 200){
-                const odgovor = await axios.get('http://localhost:5050/api/user', {withCredentials:true});
+                const odgovor = await axios.get(`${backendAPIendpoint}/user`, {withCredentials:true});
                 if(odgovor.status === 200){
                     store.dispatch(userLogin(odgovor.data));
                 }

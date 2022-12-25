@@ -13,10 +13,21 @@ import AdminMainPage from "./Pages/Admin/AdminMainPage";
 import AdminCreateUser from "./Pages/Admin/AdminCreateUser";
 import AdminCreateMeni from "./Pages/Admin/AdminCreateMeni";
 
+
+const backendAPIendpoint = "http://localhost:5050/api";
+//const backendAPIendpoint = "https://malice.vrtogo.si/api";
+
+export { backendAPIendpoint };
+
+
+
 function App() {
   return (
-    <BrowserRouter>
+      //ignore /api in url
+
+    <BrowserRouter basename="/">
       <Routes>
+        <Route path="/api/*" element={<Loading/>}/>
         <Route path="/" element={<RequireAuth />}>
           <Route path="/" element={<Homepage />} />
         </Route>

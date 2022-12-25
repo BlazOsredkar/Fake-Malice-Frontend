@@ -2,6 +2,7 @@ import {useState} from "react";
 import axios from "axios";
 import React from "react";
 import "../../style/createMeni.css";
+import {backendAPIendpoint} from "../../App";
 
 
 
@@ -24,7 +25,7 @@ const AdminCreateMeni = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(meni);
-        axios.post('http://localhost:5050/api/createMeni', meni, {withCredentials: true})
+        axios.post(`${backendAPIendpoint}/createMeni`, meni, {withCredentials: true})
             .then(res => {
                     console.log(res);
                     console.log(res.data);
@@ -34,7 +35,7 @@ const AdminCreateMeni = () => {
     };
 
     const getVrsteMenija = () => {
-        axios.get('http://localhost:5050/api/vrsteMenijev', {withCredentials: true})
+        axios.get(`${backendAPIendpoint}/vrsteMenijev`, {withCredentials: true})
             .then(res => {
                     console.log(res);
                     console.log(res.data);

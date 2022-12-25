@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import NotFoundPage from "./404page/404";
 import {Outlet} from "react-router-dom";
+import {backendAPIendpoint} from "../App";
 
 const AdminChecker = () => {
     const [isAdmin, setIsAdmin] = React.useState(false);
@@ -9,7 +10,7 @@ const AdminChecker = () => {
 
   async function handleSubmit() {
 
-    const odgovor = await axios.get("http://localhost:5050/api/user", {
+    const odgovor = await axios.get(`${backendAPIendpoint}/user`, {
       withCredentials: true,
     });
     console.log(odgovor);

@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {backendAPIendpoint} from "../App";
 
 export default function StanjeRac() {
 
@@ -9,7 +10,7 @@ export default function StanjeRac() {
     const loadStanje = async () => {
         setStanje([]);
         try {
-            const response = await axios.get(`http://localhost:5050/api/user`, {withCredentials: true});
+            const response = await axios.get(`${backendAPIendpoint}/user`, {withCredentials: true});
             setStanje(response.data.stanjerac);
         }
         catch (e) {}

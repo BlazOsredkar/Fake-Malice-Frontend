@@ -1,5 +1,6 @@
 import axios from "axios";
 import {useState} from "react";
+import {backendAPIendpoint} from "../../App";
 
 
 const AdminCreateUser = () => {
@@ -23,7 +24,7 @@ const AdminCreateUser = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(user);
-        axios.post('http://localhost:5050/api/register', user, {withCredentials: true})
+        axios.post(`${backendAPIendpoint}/register`, user, {withCredentials: true})
         .then(res => {
             console.log(res);
             console.log(res.data);

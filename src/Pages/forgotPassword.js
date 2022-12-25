@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 import ScvLogo from "../style/school_logo.png";
+import {backendAPIendpoint} from "../App";
 
 const ForgotPassword = () => {
     //check if mail exists in database
@@ -16,7 +17,7 @@ const ForgotPassword = () => {
         const formData = new FormData(e.target);
         const eposta = formData.get("eposta");
         try {
-            const response = await axios.post('http://localhost:5050/api/forgotPassword', {eposta}, {withCredentials:true})
+            const response = await axios.post(`${backendAPIendpoint}/forgotPassword`, {eposta}, {withCredentials:true})
             if(response.status === 200){
                 setEmailExists(true);
                 alert("Na vaš email smo poslali povezavo za ponastavitev gesla.");

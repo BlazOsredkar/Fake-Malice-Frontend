@@ -23,13 +23,29 @@ const AdminCreateUser = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(user);
+
         axios.post(`${backendAPIendpoint}/register`, user, {withCredentials: true})
-        .then(res => {
+            .then(res => {
             console.log(res);
             console.log(res.data);
-        }
-        )
+            alert("Uporabnik uspešno ustvarjen")
+
+            setUser({
+                ime: '',
+                priimek: '',
+                eposta: '',
+                geslo: '',
+                emso: '',
+                davcna: '',
+                datumroj: '',
+                telefon: '',
+            })
+
+        })
+            .catch(err => {
+                console.log(err);
+                alert(err.response.data.message);
+            })
     };
 
     return (

@@ -30,8 +30,9 @@ export default function SelectMenu() {
             <Calendar onChange={setDate} value={date} />
             <div className="kartice">
             {menus && menus.map((menu) => (
-                <KarticaMalica key={menu.id} ime={menu.vrstaMenija.ime} opis={menu.opis} slika={menu.vrstaMenija.ikona} />
+                <KarticaMalica key={menu.id} ime={menu.vrstaMenija.ime} opis={menu.opis || menu.vrstaMenija.opis} slika={menu.vrstaMenija.ikona} id={menu.id} reload={loadMenuOnDate}/>
             ))}
+
             </div>
         </>
     );

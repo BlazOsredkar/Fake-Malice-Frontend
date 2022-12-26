@@ -14,13 +14,13 @@ const AdminMainPage = () => {
                         </div>
                         <div className="adminMainPage__container__left__body">
                             <div className="adminMainPage__container__left__body__item">
-                                <Link to="/admin/createUser">Users</Link>
+                                <Link to="/admin/createUser">Ustvari uporabnika</Link>
                             </div>
                             <div className="adminMainPage__container__left__body__item">
-                                <Link to="/admin/roles">Roles</Link>
+                                <Link to="/admin/createMeni">Ustvari meni</Link>
                             </div>
                             <div className="adminMainPage__container__left__body__item">
-                                <Link to="/admin/permissions">Permissions</Link>
+                                <Link to="/">Izhod</Link>
                             </div>
                         </div>
                     </div>

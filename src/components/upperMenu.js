@@ -3,6 +3,8 @@ import "../style/upperMenu.css";
 import logo from "../assets/school_logo.png";
 import logoutIcon from "../assets/logoutIcon.png";
 import {Link} from "react-router-dom";
+import {selectUser} from "../auth/userSlice";
+import {useSelector} from "react-redux";
 
 const options = [
   { value: "chocolate", label: "Profil" },
@@ -11,6 +13,9 @@ const options = [
 ];
 
 const GlavniMeni = () => {
+
+  const user = useSelector(selectUser);
+
   return (
     <>
       <div className="wrapper">
@@ -32,6 +37,9 @@ const GlavniMeni = () => {
                 <li>
                   <Link to="/profil">Nastavitve</Link>
                 </li>
+                {user?.isadmin ? <li>
+                    <Link to="/admin">Admin</Link>
+                </li> : <></>}
                 {/*  <li>
                   <a href="/logout">Odjava</a>
                 </li> */}

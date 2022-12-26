@@ -3,12 +3,16 @@ import axios from "axios";
 import React from "react";
 import "../../style/createMeni.css";
 import {backendAPIendpoint} from "../../App";
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 
 
 const AdminCreateMeni = () => {
 
     const [vrstaMenija, setVrstaMenija] = useState("");
+    const [uspelo, setUspelo] = useState(false);
+    const [neuspeh, setNeuspeh] = useState(false);
 
     const [meni, setMeni] = useState({
         datum: "",
@@ -25,17 +29,31 @@ const AdminCreateMeni = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(meni);
-        axios.post(`${backendAPIendpoint}/createMeni`, meni, {withCredentials: true})
+        axios.post(`${backendAPIendpoint}/meni/create`, meni, {withCredentials: true})
             .then(res => {
                     console.log(res);
                     console.log(res.data);
+
+                    setMeni({
+                        datum: "",
+                        vrstaMenija: "",
+                        opis: "",
+                    }
+
+
+                    )
+                setUspelo(true);
                 }
+            )
+            .catch(err => {
+                setNeuspeh(true);
+            }
             )
 
     };
 
     const getVrsteMenija = () => {
-        axios.get(`${backendAPIendpoint}/vrsteMenijev`, {withCredentials: true})
+        axios.get(`${backendAPIendpoint}/meni/vrste`, {withCredentials: true})
             .then(res => {
                     console.log(res);
                     console.log(res.data);
@@ -72,10 +90,13 @@ const AdminCreateMeni = () => {
                 <br/>
                 <label>Opis</label>
                 <br/>
-                <input type="text" name="opis" value={meni.opis} onChange={handleChange} required/>
+                <input type="text" name="opis" value={meni.opis} onChange={handleChange}/>
                 <br/>
                 <button type="submit" className="submit">Submit</button>
+
             </form>
+            {uspelo ? <Alert severity="success">Meni uspešno ustvarjen</Alert> : null}
+            {neuspeh ? <Alert severity="error">Meni ni bil ustvarjen</Alert> : null}
         </div>
     )
 }

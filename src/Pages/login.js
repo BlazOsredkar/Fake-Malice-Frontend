@@ -6,6 +6,10 @@ import {setUserLoading, userLogin} from "../auth/userSlice";
 import {useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
 import {backendAPIendpoint} from "../App";
+import LoginImage from '../assets/Login_Malice.svg'
+
+import EmailIcon from '@mui/icons-material/Email';
+import LockIcon from '@mui/icons-material/Lock';
 
 const Login = () => {
     async function handleSubmit(e){
@@ -31,21 +35,29 @@ const Login = () => {
     }
   return (
       <>
-      <div className="App">
-          <img src={ScvLogo} alt="logo" className="logo"/>
-          <form onSubmit={handleSubmit}>
+      <div className="login-page">
+            <div className="login-page-left">
+          <img src={LoginImage} alt="logo" className="logo"/>
+            </div>
+            <div className="login-page-right">
+          <form onSubmit={handleSubmit} className={"login-form"}>
               {/*Email*/}
-              <p>Email</p>
+              <p className={"login-form-title"}>Prijava v malice</p>
+                <div className="login-form-input">
+                <EmailIcon />
               <input type="email" className="inputEmail input" name="eposta" placeholder="Email" required/>
-              <br/>
+                </div>
               {/*Password*/}
-              <p>Geslo</p>
+
+                <div className="login-form-input">
+                    <LockIcon />
               <input type="password" className="input inputPassword" name="geslo" placeholder="Geslo" required/>
-              <br/>
+                </div>
               {/*Submit*/}
-              <div className="button"><input className="submit" type="submit" value="Prijava"/></div>
-              {/*<Link to="/forgotPassword" className="PozabilGeslo">Pozabljeno geslo?</Link>*/}
+              <input className="button" type="submit" value="Prijava"/>
+              <Link to="/forgotPassword" className="PozabilGeslo">Pozabljeno geslo?</Link>
           </form>
+            </div>
 
       </div>
 

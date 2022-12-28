@@ -31,8 +31,6 @@ const AdminCreateMeni = () => {
         console.log(meni);
         axios.post(`${backendAPIendpoint}/meni/create`, meni, {withCredentials: true})
             .then(res => {
-                    console.log(res);
-                    console.log(res.data);
 
                     setMeni({
                         datum: "",
@@ -55,8 +53,7 @@ const AdminCreateMeni = () => {
     const getVrsteMenija = () => {
         axios.get(`${backendAPIendpoint}/meni/vrste`, {withCredentials: true})
             .then(res => {
-                    console.log(res);
-                    console.log(res.data);
+                    res.data.sort((a, b) => a.id - b.id);
                     setVrstaMenija(res.data);
                 }
             )

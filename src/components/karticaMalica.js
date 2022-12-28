@@ -1,6 +1,5 @@
 import React from "react";
 import "../style/karticaMalice.css";
-import image from "../assets/mesni.png";
 import {useSelector} from "react-redux";
 import {selectUser} from "../auth/userSlice";
 import axios from "axios";

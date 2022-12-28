@@ -15,6 +15,7 @@ export default function SelectMenu() {
         try {
 
             const response = await axios.get(`${backendAPIendpoint}/meni?datum=${date}`, {withCredentials: true});
+            response.data.sort((a, b) => a.vrstaMenija.id - b.vrstaMenija.id);
             setMenus(response.data);
 
         }
@@ -27,7 +28,7 @@ export default function SelectMenu() {
 
     return (
         <>
-            <Calendar onChange={setDate} value={date} />
+            <Calendar onChange={setDate} value={date} minDate={new Date()}/>
             <div className="kartice">
             {menus && menus.map((menu) => (
                 <KarticaMalica key={menu.id} ime={menu.vrstaMenija.ime} opis={menu.opis || menu.vrstaMenija.opis} slika={menu.vrstaMenija.ikona} id={menu.id} reload={loadMenuOnDate}/>

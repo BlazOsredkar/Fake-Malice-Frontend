@@ -1,64 +1,85 @@
-.App{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px;
-    text-align: left;
-    width: 20%;
-    height: 50%;
-    background-color: #f5f5f5;
+.login-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.login-page > .login-page-left{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.login-page > .login-page-right{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding-left: 100px;
+}
+
+.login-page-left > .logo
+{
+width: 70%;
+}
+
+.login-form{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: 'Roboto', sans-serif;
-    border-radius: 10px;
-
+    gap: 30px;
+    width: 30%;
 }
-.submit{
-    margin-top: 40px;
-    width: 200px;
-    height: 40px;
-    background-color: #4CAF50;
+
+.login-form-title{
+    font-size: 28px;
+    padding-bottom: 10px;
+}
+
+.login-form > .button{
+    background-color: #002BC3;
     color: white;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.input{
+    border-radius: 52px;
+    padding: 10px 110px;
+    font-size: 28px;
     width: 100%;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    padding: 12px 20px 12px 40px;
+    cursor: pointer;
+    margin-top: 20px;
 }
-.inputEmail:active, .inputEmail:focus, .inputEmail:valid, .inputEmail{
-    background-image: url('../assets/mail.svg');
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    background-size: 20px 20px;
-}
-.inputPassword:active, .inputPassword:focus, .inputPassword:valid, .inputPassword{
-    background-image: url('../assets/lock.svg');
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    background-size: 20px 20px;
-}
-.login {
-    align-items: center;
-    justify-content: center;
+
+.login-form-input{
     display: flex;
-    flex-direction: column;
-    width: 90%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #F1F1F1;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 52px;
+    gap: 20px;
 }
 
-.button {
-    position: absolute;
-    left: 50%;
-    margin-bottom: 20px;
-    transform: translate(-50%, -20%);
+.login-form-input > input{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    font-size: 18px;
+}
 
+.login-form-input svg{
+    width: 30px;
+    height: 30px;
+
+}
+
+.login-form-input > input:focus{
+    outline: none;
+}
+
+.login-form > .PozabilGeslo{
+    color:#9E9E9E;
+    text-decoration: underline;
 }

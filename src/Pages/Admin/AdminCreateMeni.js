@@ -5,6 +5,7 @@ import "../../style/createMeni.css";
 import {backendAPIendpoint} from "../../App";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
+import AdminSidebar from "./AdminSidebar";
 
 
 
@@ -16,7 +17,7 @@ const AdminCreateMeni = () => {
 
     const [meni, setMeni] = useState({
         datum: "",
-        vrstaMenija: "",
+        vrstaMenija: 0,
         opis: "",
     }
     );
@@ -79,9 +80,9 @@ const AdminCreateMeni = () => {
                 <label>Vrsta menija</label>
                 <br/>
                 <select name="vrstaMenija" value={meni.vrstaMenija} onChange={handleChange} required>
-                    <option value="" disabled selected hidden>Izberi vrsto menija</option>
+                    <option value={0}disabled hidden>Izberi vrsto menija</option>
                     {vrstaMenija && vrstaMenija.map((vrstaMenija) => (
-                        <option value={vrstaMenija.id}>{vrstaMenija.ime}</option>
+                        <option key={vrstaMenija.id} value={vrstaMenija.id}>{vrstaMenija.ime}</option>
                     ))}
                 </select>
                 <br/>

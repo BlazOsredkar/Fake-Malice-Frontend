@@ -2,6 +2,8 @@ import axios from "axios";
 import {useState} from "react";
 import {backendAPIendpoint} from "../../App";
 
+import "../../style/adminCreateUser.css";
+
 
 const AdminCreateUser = () => {
 
@@ -49,7 +51,7 @@ const AdminCreateUser = () => {
     };
 
     return (
-        <div>
+        <div className={"admin-create-user"}>
             <form onSubmit={handleSubmit}>
 
                 <label>Ime</label>

@@ -35,9 +35,8 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/loading" element={<Loading />} />
         <Route path="/admin" element={<AdminChecker />} >
-            <Route path="/admin/" element={<AdminMainPage/>} />
-            <Route path="/admin/createUser" element={<AdminCreateUser/>} />
-            <Route path="/admin/createMeni" element={<AdminCreateMeni/>} />
+          <Route path="" element={<AdminMainPage/>} />
+            <Route path="*" element={<AdminMainPage/>} />
         </Route>
           <Route path="/forgotPassword" element={<ForgotPassword/>} />
 

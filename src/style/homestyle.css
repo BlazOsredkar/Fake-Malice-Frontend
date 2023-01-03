@@ -43,11 +43,12 @@ width: 70%;
     color: white;
     border: none;
     border-radius: 52px;
-    padding: 10px 110px;
+    padding: 10px 10px;
     font-size: 28px;
     width: 100%;
     cursor: pointer;
     margin-top: 20px;
+    align-items: center;
 }
 
 .login-form-input{

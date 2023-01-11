@@ -28,8 +28,11 @@ const RequireAuth = () => {
         store.dispatch(setUserLoading(false));
     }
     useEffect(() => {
-        handleLoading();
+    loadingF()
     }, []);
+    const loadingF = () => {
+        handleLoading();
+    }
 
     return (
         <>

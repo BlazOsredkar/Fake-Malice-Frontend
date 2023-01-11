@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 import "./style/homestyle.css";
 import Logout from "./components/logout";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Router, Routes} from "react-router-dom";
 import Homepage from "./Pages/home";
 import RequireAuth from "./app/RequireAuth";
 import Loading from "./components/loading";
@@ -30,15 +30,16 @@ function App() {
         <Route path="/api/*" element={<Loading/>}/>
         <Route path="/" element={<RequireAuth />}>
           <Route path="/" element={<Homepage />} />
+          <Route path="/admin" element={<AdminChecker />} >
+            <Route path="" element={<Navigate to={"/admin/createMeni"} />} />
+            <Route path="*" element={<AdminMainPage/>} />
+          </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/loading" element={<Loading />} />
-        <Route path="/admin" element={<AdminChecker />} >
-          <Route path="" element={<AdminMainPage/>} />
-            <Route path="*" element={<AdminMainPage/>} />
-        </Route>
           <Route path="/forgotPassword" element={<ForgotPassword/>} />
+
 
       </Routes>
     </BrowserRouter>

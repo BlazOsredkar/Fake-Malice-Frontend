@@ -52,7 +52,7 @@ const AdminCreateUser = () => {
 
     return (
         <div className={"admin-create-user"}>
-            <form onSubmit={handleSubmit}>
+             <form onSubmit={handleSubmit}>
 
                 <label>Ime</label>
                 <input type="text" name="ime" value={user.ime} onChange={handleChange} required/>

@@ -42,7 +42,7 @@ const KarticaMalica = ({ime, opis, slika, id, reload}) => {
 
         <div className="karticaMalica__opis">
           <h3>{ime}</h3>
-          <p>{opis}</p>
+          <p1>{opis}</p1>
         </div>
       </div>
     </>

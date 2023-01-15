@@ -52,8 +52,8 @@ const AdminCreateUser = () => {
 
     return (
         <div className={"admin-create-user"}>
+            <div className={"admin-create-user-form"}>
              <form onSubmit={handleSubmit}>
-
                 <label>Ime</label>
                 <input type="text" name="ime" value={user.ime} onChange={handleChange} required/>
                 <label>Priimek</label>
@@ -70,9 +70,10 @@ const AdminCreateUser = () => {
                 <input type="date" name="datumroj" value={user.datumroj} onChange={handleChange} required/>
                 <label>Telefon</label>
                 <input type="text" name="telefon" value={user.telefon} onChange={handleChange} required/>
-
+                <br/>
                 <button type="submit">Submit</button>
             </form>
+            </div>
         </div>
     )
 

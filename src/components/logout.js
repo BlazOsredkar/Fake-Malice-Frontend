@@ -8,7 +8,7 @@ import {backendAPIendpoint} from "../App";
 const Logout = () => {
 
     async function handleSubmit(){
-        const response = await axios.post(`${backendAPIendpoint}/logout`,  {}, {withCredentials:true})
+        const response = await axios.post(`${backendAPIendpoint}/user/logout`,  {}, {withCredentials:true})
         if(response.status === 200){
             window.location.pathname = "/";
         }

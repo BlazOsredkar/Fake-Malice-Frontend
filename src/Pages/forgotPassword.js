@@ -23,7 +23,7 @@ const [eposta, setEmail] = useState("");
         const formData = new FormData(e.target);
         const eposta = formData.get("eposta");
         try {
-            const response = await axios.post(`${backendAPIendpoint}/forgotPassword`, {eposta}, {withCredentials:true})
+            const response = await axios.post(`${backendAPIendpoint}/user/forgotPassword`, {eposta}, {withCredentials:true})
             if(response.status === 200){
                 setEmailExists(true);
                 alert("Na vaš email smo poslali povezavo za ponastavitev gesla.");

@@ -28,13 +28,9 @@ const KarticaMalica = ({ime, opis, slika, id, reload}) => {
     <>
       <div className="karticaMalic">
         <div className="karticaMalica__gumb">
-
-
           {user.isadmin ?  <> </> : <button>Naroči</button>}
           {user.isadmin ?  <button onClick={handleDeleteMeni}>Izbriši</button> : <> </>}
           {user.isadmin ?  <button>Uredi</button> : <> </>}
-
-
         </div>
         <div className="karticaMalica__slika">
           <img src={slika} alt="slika malice" height={150} />

@@ -1,23 +1,55 @@
+.admin-create-meni{
+    width: 100%;
+}
 
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
 
-.createMenu {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px;
-    text-align: left;
-    width: 20%;
-    height: 50%;
-    background-color: #f5f5f5;
+.admin-create-meni-form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: 'Roboto', sans-serif;
-    border-radius: 10px;
-
-
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px 0px #ccc;
 }
 
+.admin-create-meni-form input, .admin-create-meni-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
 
+.admin-create-meni-form input:focus, .admin-create-meni-form select:focus {
+    border-bottom: 2px solid #333;
+    outline: none;
+}
+
+.admin-create-meni-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.admin-create-meni-form button:hover {
+    background-color: #555;
+}

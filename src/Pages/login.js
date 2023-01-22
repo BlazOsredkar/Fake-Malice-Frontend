@@ -20,7 +20,7 @@ const Login = () => {
         const geslo = formData.get("geslo");
         store.dispatch(setUserLoading(true));
         try {
-            const response = await axios.post(`${backendAPIendpoint}/login`, {eposta, geslo}, {withCredentials:true})
+            const response = await axios.post(`${backendAPIendpoint}/user/login`, {eposta, geslo}, {withCredentials:true})
 
             if(response.status === 200){
                 const odgovor = await axios.get(`${backendAPIendpoint}/user`, {withCredentials:true});

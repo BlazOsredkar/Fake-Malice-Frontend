@@ -11,6 +11,8 @@ import AdminSidebar from "./AdminSidebar";
 
 const AdminCreateMeni = () => {
 
+    const [slike, setSlike] = useState(['/assets/mesni_meni.png']);
+
     const [vrstaMenija, setVrstaMenija] = useState("");
     const [uspelo, setUspelo] = useState(false);
     const [neuspeh, setNeuspeh] = useState(false);
@@ -71,7 +73,9 @@ const AdminCreateMeni = () => {
 
 
     return (
-        <div className="createMenu">
+        <div className="admin-create-meni">
+            <div className="admin-create-meni-form">
+
             <form onSubmit={handleSubmit}>
                 <label>Datum</label>
                 <br/>
@@ -84,15 +88,14 @@ const AdminCreateMeni = () => {
                     {vrstaMenija && vrstaMenija.map((vrstaMenija) => (
                         <option key={vrstaMenija.id} value={vrstaMenija.id}>{vrstaMenija.ime}</option>
                     ))}
+
                 </select>
                 <br/>
                 <label>Opis</label>
-                <br/>
                 <input type="text" name="opis" value={meni.opis} onChange={handleChange}/>
-                <br/>
-                <button type="submit" className="submit">Submit</button>
-
+                <button type="submit" className="submit">Potrdi</button>
             </form>
+            </div>
             {uspelo ? <Alert severity="success">Meni uspešno ustvarjen</Alert> : null}
             {neuspeh ? <Alert severity="error">Meni ni bil ustvarjen</Alert> : null}
         </div>

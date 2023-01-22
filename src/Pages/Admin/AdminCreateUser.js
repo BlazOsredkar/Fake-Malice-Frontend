@@ -26,7 +26,7 @@ const AdminCreateUser = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post(`${backendAPIendpoint}/register`, user, {withCredentials: true})
+        axios.post(`${backendAPIendpoint}/user/register`, user, {withCredentials: true})
             .then(res => {
             console.log(res);
             console.log(res.data);
@@ -71,7 +71,7 @@ const AdminCreateUser = () => {
                 <label>Telefon</label>
                 <input type="text" name="telefon" value={user.telefon} onChange={handleChange} required/>
                 <br/>
-                <button type="submit">Submit</button>
+                <button type="submit">Potrdi</button>
             </form>
             </div>
         </div>

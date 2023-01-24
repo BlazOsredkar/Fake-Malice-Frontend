@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import "./style/homestyle.css";
+import "./style/loginPage.css";
 import Logout from "./components/logout";
 import {BrowserRouter, Navigate, Route, Router, Routes} from "react-router-dom";
 import Homepage from "./Pages/home";
@@ -12,10 +12,11 @@ import ForgotPassword from "./Pages/forgotPassword";
 import AdminMainPage from "./Pages/Admin/AdminMainPage";
 import AdminCreateUser from "./Pages/Admin/AdminCreateUser";
 import AdminCreateMeni from "./Pages/Admin/AdminCreateMeni";
+import ResetPassword from "./Pages/resetPassword";
 
 
 const backendAPIendpoint = "http://localhost:5050/api";
-//const backendAPIendpoint = "https://malice.vrtogo.si/api";
+//const backendAPIendpoint = "https://backend.malice.vrtogo.si/api";
 
 export { backendAPIendpoint };
 
@@ -39,6 +40,7 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/loading" element={<Loading />} />
           <Route path="/forgotPassword" element={<ForgotPassword/>} />
+        <Route path={"/reset-password"} element={<ResetPassword/>} />
 
 
       </Routes>

@@ -35,31 +35,27 @@ const Login = () => {
     }
   return (
       <>
-      <div className="login-page">
-            <div className="login-page-left">
-          <img src={LoginImage} alt="logo" className="logo"/>
-            </div>
-            <div className="login-page-right">
-          <form onSubmit={handleSubmit} className={"login-form"}>
-              {/*Email*/}
-              <p className={"login-form-title"}>Prijava v malice</p>
-                <div className="login-form-input">
-                <EmailIcon />
-              <input type="email" className="inputEmail input" name="eposta" placeholder="Email" required/>
-                </div>
-              {/*Password*/}
+          <div className="login-page">
+              <div className="login-page-left">
+                  <img src={LoginImage} alt="logo" className="logo"/>
+              </div>
+              <div className="login-page-right">
+                  <form onSubmit={handleSubmit} className={"login-form"}>
+                      <p className={"login-form-title"}>Prijava v malice</p>
+                      <div className="login-form-input">
+                          <EmailIcon />
+                          <input type="email" className="inputEmail input" name="eposta" placeholder="Email" required/>
+                      </div>
+                      <div className="login-form-input">
+                          <LockIcon />
+                          <input type="password" autocomplete="current-password" id="current-password" className="input inputPassword" name="geslo" placeholder="Geslo" required/>
+                      </div>
+                      <input className="button" type="submit" value="Prijava"/>
+                      <Link to="/forgotPassword" className="PozabilGeslo">Pozabljeno geslo?</Link>
+                  </form>
+              </div>
+          </div>
 
-                <div className="login-form-input">
-                    <LockIcon />
-              <input type="password" className="input inputPassword" name="geslo" placeholder="Geslo" required/>
-                </div>
-              {/*Submit*/}
-              <input className="button" type="submit" value="Prijava"/>
-              <Link to="/forgotPassword" className="PozabilGeslo">Pozabljeno geslo?</Link>
-          </form>
-            </div>
-
-      </div>
 
       </>
     );

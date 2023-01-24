@@ -1,0 +1,123 @@
+/* Common styles for all elements */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.login-page-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.login-page-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding-left: 100px;
+}
+
+.logo {
+    width: 70%;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 30%;
+}
+
+.login-form-title {
+    font-size: 28px;
+    padding-bottom: 10px;
+}
+
+.button {
+    background-color: #002BC3;
+    color: white;
+    border: none;
+    border-radius: 52px;
+    padding: 10px 10px;
+    font-size: 28px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.login-form-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #F1F1F1;
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 52px;
+    gap: 20px;
+}
+
+.inputEmail, .inputPassword {
+    border: none;
+    width: 100%;
+    font-size: 18px;
+}
+
+.PozabilGeslo {
+    color:#9E9E9E;
+    text-decoration: underline;
+}
+
+/* For mobile screens */
+@media (max-width: 1600px) {
+    /* styles for mobile devices */
+    .login-page {
+        /* Add styles to make the layout look good on small screens */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .login-page > .login-page-left {
+        display: none;
+    }
+    .login-page > .login-page-right {
+        padding: 0;
+    }
+
+    .login-form {
+        /* Add styles to adjust the size of the form and its elements */
+        width: 80%;
+    }
+
+    .login-form-title {
+        font-size: 24px;
+    }
+
+    .button {
+        /* Add styles to adjust the size of the button */
+        font-size: 20px;
+    }
+    .login-form-input {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: #F1F1F1;
+        width: 100%;
+        padding: 10px 20px;
+        border-radius: 52px;
+        gap: 20px;
+
+    }
+
+    .inputEmail, .inputPassword {
+        /* Add styles to adjust the size of the input */
+        font-size: 16px;
+    }
+}

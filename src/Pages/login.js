@@ -48,7 +48,7 @@ const Login = () => {
                       </div>
                       <div className="login-form-input">
                           <LockIcon />
-                          <input type="password" autocomplete="current-password" id="current-password" className="input inputPassword" name="geslo" placeholder="Geslo" required/>
+                          <input type="password" autoComplete="current-password" id="current-password" className="input inputPassword" name="geslo" placeholder="Geslo" required/>
                       </div>
                       <input className="button" type="submit" value="Prijava"/>
                       <Link to="/forgotPassword" className="PozabilGeslo">Pozabljeno geslo?</Link>

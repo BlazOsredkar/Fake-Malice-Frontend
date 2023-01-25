@@ -53,29 +53,35 @@ const AdminCreateUser = () => {
     return (
         <div className={"admin-create-user"}>
             <div className={"admin-create-user-form"}>
-             <form onSubmit={handleSubmit}>
-                <label>Ime</label>
-                <input type="text" name="ime" value={user.ime} onChange={handleChange} required/>
-                <label>Priimek</label>
-                <input type="text" name="priimek" value={user.priimek} onChange={handleChange} required/>
-                <label>E-pošta</label>
-                <input type="text" name="eposta" value={user.eposta} onChange={handleChange} required/>
-                <label>Geslo</label>
-                <input type="password" name="geslo" value={user.geslo} onChange={handleChange} required/>
-                <label>EMŠO</label>
-                <input type="text" name="emso" value={user.emso} onChange={handleChange} required/>
-                <label>Davčna številka</label>
-                <input type="text" name="davcna" value={user.davcna} onChange={handleChange} required/>
-                <label>Datum rojstva</label>
-                <input type="date" name="datumroj" value={user.datumroj} onChange={handleChange} required/>
-                <label>Telefon</label>
-                <input type="text" name="telefon" value={user.telefon} onChange={handleChange} required/>
-                <br/>
-                <button type="submit">Potrdi</button>
-            </form>
+                <form onSubmit={handleSubmit}>
+                    <div className="input-container">
+                        <div className="input-container-left">
+                            <label>Ime</label>
+                            <input type="text" name="ime" value={user.ime} onChange={handleChange} required/>
+                            <label>Priimek</label>
+                            <input type="text" name="priimek" value={user.priimek} onChange={handleChange} required/>
+                            <label>E-pošta</label>
+                            <input type="text" name="eposta" value={user.eposta} onChange={handleChange} required/>
+                            <label>Geslo</label>
+                            <input type="password" name="geslo" value={user.geslo} onChange={handleChange} required/>
+                        </div>
+                        <div className="input-container-right">
+                            <label>EMŠO</label>
+                            <input type="text" name="ems" value={user.ems} onChange={handleChange} required/>
+                            <label>Telefon</label>
+                            <input type="text" name="telefon" value={user.telefon} onChange={handleChange} required/>
+                            <label>Naslov</label>
+                            <input type="text" name="naslov" value={user.naslov} onChange={handleChange} required/>
+                            <label>Mesto</label>
+                            <input type="text" name="mesto" value={user.mesto} onChange={handleChange} required/>
+                        </div>
+                    </div>
+                    <button className="submit-button" type="submit">Potrdi</button>
+                </form>
             </div>
         </div>
-    )
+
+    );
 
 }
 

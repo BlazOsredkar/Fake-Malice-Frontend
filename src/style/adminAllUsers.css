@@ -1,0 +1,65 @@
+.admin-all-users {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-all-users h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.admin-all-users table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow: scroll;
+}
+
+.admin-all-users th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-all-users button {
+    background-color: #002BC3;
+    color: white;
+    border: none;
+    border-radius: 52px;
+    padding: 10px 10px;
+    font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 20px;
+    align-items: center;
+}
+
+
+
+@media (max-width: 1600px) {
+
+.admin-all-users {
+    align-items: center;
+    justify-content: center;
+}
+.admin-all-users h1 {
+    font-size: 28px;
+}
+
+.admin-all-users table {
+    /* Add styles to adjust the size of the table and its elements */
+    width: 80%;
+}
+
+.admin-all-users th, td {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.admin-all-users button {
+    /* Add styles to adjust the size of the button */
+    font-size: 16px;
+}
+}

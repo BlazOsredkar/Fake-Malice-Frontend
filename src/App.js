@@ -13,6 +13,7 @@ import AdminMainPage from "./Pages/Admin/AdminMainPage";
 import AdminCreateUser from "./Pages/Admin/AdminCreateUser";
 import AdminCreateMeni from "./Pages/Admin/AdminCreateMeni";
 import ResetPassword from "./Pages/resetPassword";
+import AdminAllUsers from "./Pages/Admin/AdminAllUsers";
 
 
 const backendAPIendpoint = "http://localhost:5050/api";

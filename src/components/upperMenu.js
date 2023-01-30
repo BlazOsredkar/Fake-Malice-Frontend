@@ -5,6 +5,7 @@ import logoutIcon from "../assets/logoutIcon.png";
 import {Link} from "react-router-dom";
 import {selectUser} from "../auth/userSlice";
 import {useSelector} from "react-redux";
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const options = [
   { value: "chocolate", label: "Profil" },
@@ -40,16 +41,9 @@ const GlavniMeni = () => {
                 {user?.isadmin ? <li>
                     <Link to="/admin">Admin</Link>
                 </li> : <></>}
-                {/*  <li>
-                  <a href="/logout">Odjava</a>
-                </li> */}
                 <div className="profile">
                   <Link to="/logout">
-                    <img
-                      src={logoutIcon}
-                      alt="profile"
-                      className="profilepic"
-                    />
+                    <ExitToAppIcon />
                   </Link>
                 </div>
               </ul>

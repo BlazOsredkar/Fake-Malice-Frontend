@@ -15,16 +15,33 @@ const sidebarNavItems = [
         icon: <i className="bx bx-user-plus"></i>,
     },
     {
-        title: 'Naročila',
-        path: '/admin/narocila',
-        icon: <i className="bx bx-shopping-bag"></i>,
+        title: 'Vsi uporabniki',
+        path: '/admin/allUsers',
+        icon: <i className="bx bx-user"></i>,
 
+    },
+    {
+        title: 'Vsi kraji',
+        path: '/admin/allCities',
+        icon: <i className="bx bxs-city"></i>,
+    },
+    {
+        title: 'Vsi razredi',
+        path: '/admin/allClasses',
+        icon: <i className="bx bx-book"></i>,
+    },
+    {
+        title: 'Vse šole',
+        path: '/admin/allSchools',
+        icon: <i className="bx bxs-school"></i>,
     },
     {
         title: 'Izhod',
         path: '/',
         icon: <i className="bx bx-exit"></i>,
-    }
+    },
+
+
 
 ]
 

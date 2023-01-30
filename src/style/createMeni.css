@@ -1,55 +1,84 @@
-.admin-create-meni{
+.admin-create-meni {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     width: 100%;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
 }
 
 .admin-create-meni-form {
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: none;
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 10px 0px #ccc;
+    gap: 30px;
+    width: 30%;
 }
 
-.admin-create-meni-form input, .admin-create-meni-form select {
+.admin-create-meni-form label {
+    font-size: 28px;
+    padding-bottom: 10px;
+}
+
+.admin-create-meni-form input {
+    background-color: #F1F1F1;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 15px 20px;
+    border-radius: 52px;
+    gap: 20px;
+    font-size: 18px;
     border: none;
-    border-bottom: 2px solid #ccc;
-    border-radius: 5px;
-    font-size: 1.2em;
 }
 
-.admin-create-meni-form input:focus, .admin-create-meni-form select:focus {
-    border-bottom: 2px solid #333;
-    outline: none;
-}
-
-.admin-create-meni-form button {
+.admin-create-meni-form select {
+    background-color: #F1F1F1;
     width: 100%;
-    padding: 10px;
+    padding: 15px 20px;
+    border-radius: 52px;
+    gap: 20px;
+    font-size: 18px;
     border: none;
-    border-radius: 5px;
-    background-color: #333;
-    color: #fff;
-    font-weight: bold;
+}
+
+.admin-create-meni-form .submit {
+    background-color: #002BC3;
+    color: white;
+    border: none;
+    border-radius: 52px;
+    padding: 10px 10px;
+    font-size: 28px;
+    width: 100%;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    margin-top: 20px;
+    align-items: center;
 }
 
-.admin-create-meni-form button:hover {
-    background-color: #555;
+/* For mobile screens */
+@media (max-width: 1600px) {
+    /* styles for mobile devices */
+    .admin-create-meni {
+        /* Add styles to make the layout look good on small screens */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .admin-create-meni-form {
+        /* Add styles to adjust the size of the form and its elements */
+        width: 80%;
+    }
+
+    .admin-create-meni-form label {
+        font-size: 24px;
+    }
+
+    .admin-create-meni-form input, .admin-create-meni-form select {
+        /* Add styles to adjust the size of the input */
+        font-size: 16px;
+    }
+
+    .admin-create-meni-form .submit {
+        /* Add styles to adjust the size of the button */
+        font-size: 20px;
+    }
 }

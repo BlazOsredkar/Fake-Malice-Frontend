@@ -53,18 +53,15 @@
     align-items: center;
 }
 
-/* For mobile screens */
+/* Mobilne naprave */
 @media (max-width: 1600px) {
-    /* styles for mobile devices */
     .admin-create-meni {
-        /* Add styles to make the layout look good on small screens */
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
 
     .admin-create-meni-form {
-        /* Add styles to adjust the size of the form and its elements */
         width: 80%;
     }
 
@@ -73,12 +70,10 @@
     }
 
     .admin-create-meni-form input, .admin-create-meni-form select {
-        /* Add styles to adjust the size of the input */
         font-size: 16px;
     }
 
     .admin-create-meni-form .submit {
-        /* Add styles to adjust the size of the button */
         font-size: 20px;
     }
 }

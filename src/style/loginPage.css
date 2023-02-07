@@ -74,11 +74,8 @@
     text-decoration: underline;
 }
 
-/* For mobile screens */
 @media (max-width: 1600px) {
-    /* styles for mobile devices */
     .login-page {
-        /* Add styles to make the layout look good on small screens */
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -91,7 +88,6 @@
     }
 
     .login-form {
-        /* Add styles to adjust the size of the form and its elements */
         width: 80%;
     }
 
@@ -100,7 +96,6 @@
     }
 
     .button {
-        /* Add styles to adjust the size of the button */
         font-size: 20px;
     }
     .login-form-input {
@@ -117,7 +112,6 @@
     }
 
     .inputEmail, .inputPassword {
-        /* Add styles to adjust the size of the input */
         font-size: 16px;
     }
 }

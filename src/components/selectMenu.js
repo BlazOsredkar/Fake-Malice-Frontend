@@ -8,6 +8,7 @@ import {backendAPIendpoint} from "../App";
 export default function SelectMenu() {
     const [menus, setMenus] = useState(null);
     const [date, setDate] = useState(new Date());
+    const [selectedMenu, setSelectedMenu] = useState(null);
 
 
     const loadMenuOnDate = async () => {
@@ -20,18 +21,28 @@ export default function SelectMenu() {
 
         }
         catch (e) {}
+        handleSelectedMenu();
     }
     useEffect(() => {
         loadMenuOnDate();
     }
     , [date])
 
+    const handleSelectedMenu = () => {
+        try {
+            axios.post(`${backendAPIendpoint}/meni/order/get`, {datum:date},{withCredentials: true}).then((response) => {
+                setSelectedMenu(response.data);
+            });
+
+        }catch (e) {}
+    }
+
     return (
         <>
             <Calendar onChange={setDate} value={date} minDate={new Date()}/>
             <div className="kartice">
             {menus && menus.map((menu) => (
-                <KarticaMalica key={menu.id} ime={menu.vrstaMenija.ime} opis={menu.opis || menu.vrstaMenija.opis} slika={menu.vrstaMenija.ikona} id={menu.id} reload={loadMenuOnDate}/>
+                <KarticaMalica key={menu.id} ime={menu.vrstaMenija.ime} opis={menu.opis || menu.vrstaMenija.opis} slika={menu.vrstaMenija.ikona} id={menu.id} reload={loadMenuOnDate} selected={selectedMenu == menu.id}/>
             ))}
 
             </div>

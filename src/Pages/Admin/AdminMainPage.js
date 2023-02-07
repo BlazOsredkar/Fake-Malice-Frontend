@@ -4,12 +4,13 @@ import AdminCreateUser from "./AdminCreateUser";
 import AdminCreateMeni from "./AdminCreateMeni";
 import React from "react";
 
-import "../../style/adminMainPage.css";
+import "../../style/Admin/adminMainPage.css";
 import AdminAllUsers from "./AdminAllUsers";
 import AdminEditUser from "./AdminEditUser";
 import AdminAllCities from "./AdminAllCities";
 import AdminAllClasses from "./AdminAllClasses";
 import AdminAllSchools from "./AdminAllSchools";
+import AdminEditSchool from "./AdminEditSchool";
 
 const AdminMainPage = () => {
 
@@ -23,6 +24,7 @@ const AdminMainPage = () => {
                 <Route path="/createMeni" element={<AdminCreateMeni/>} />
                 <Route path="/allUsers" element={<AdminAllUsers/>} />
                 <Route path="/editUser/:id" element={<AdminEditUser/>} />
+                <Route path="/school/update/:id" element={<AdminEditSchool/>} />
                 <Route path="/allCities" element={<AdminAllCities/>}  />
                 <Route path="/allClasses" element={<AdminAllClasses/>}  />
                 <Route path="/allSchools" element={<AdminAllSchools/>} />

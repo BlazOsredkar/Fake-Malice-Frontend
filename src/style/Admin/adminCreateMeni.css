@@ -1,4 +1,4 @@
-.admin-create-user {
+.admin-create-meni {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,36 +11,42 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
 
+.admin-create-user-form > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .input-container {
     display: flex;
     flex-direction: row;
-    gap: 30px;
-
+    gap: 20px;
 }
 
 .input-container-left, .input-container-right {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-
-
+    gap: 10px;
+    flex: 1;
+    width: 100%;
 }
 
+.admin-create-user-city-input{
+    width: 100% !important;
+}
 .admin-create-user-form label {
     font-size: 18px;
     padding-bottom: 10px;
 }
 
-.admin-create-user-form input {
-    background-color: #F1F1F1;
+.admin-create-user-form-input {
+    display: flex;
+    gap: 30px;
     width: 100%;
-    padding: 15px 20px;
-    border-radius: 52px;
-    font-size: 25px;
-    border: none;
     margin-bottom: 20px;
 }
 
@@ -59,7 +65,7 @@
     color: white;
     border: none;
     border-radius: 52px;
-    padding: 10px 10px;
+    padding: 10px 20px;
     font-size: 28px;
     width: 100%;
     cursor: pointer;
@@ -81,7 +87,6 @@
 }
 
 .input-container-kraj > input[type="text"] {
-
     width: 100%;
     height: 100%;
     padding: 8px;
@@ -95,7 +100,6 @@
 .input-container-kraj > input[type="text"]:focus {
     opacity: 1;
 }
-
 
 /* For mobile screens */
 @media (max-width: 1600px) {
@@ -117,9 +121,7 @@
     }
 
     .admin-create-user-form input {
-        /* Add styles to adjust the size of the input */
-        padding: 10px 20px;
-        font-size: 16px;
+        gap: 140px;
     }
 
     .submit-button {
@@ -129,7 +131,7 @@
 
     .input-container {
         flex-direction: column;
-        gap: 0px;
+        gap: 10px;
 
     }
     .input-container-left, .input-container-right {

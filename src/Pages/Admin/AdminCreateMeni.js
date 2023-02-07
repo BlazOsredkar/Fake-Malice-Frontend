@@ -1,11 +1,12 @@
 import {useState} from "react";
 import axios from "axios";
 import React from "react";
-import "../../style/createMeni.css";
 import {backendAPIendpoint} from "../../App";
+import "../../style/Admin/adminCreateMeni.css";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import AdminSidebar from "./AdminSidebar";
+import {Autocomplete, MenuItem, Select, TextField} from "@mui/material";
 
 
 
@@ -77,22 +78,19 @@ const AdminCreateMeni = () => {
             <div className="admin-create-meni-form">
 
             <form onSubmit={handleSubmit}>
-                <label>Datum</label>
-                <br/>
-                <input type="date" name="datum" value={meni.datum} onChange={handleChange} required/>
-                <br/>
-                <label>Vrsta menija</label>
-                <br/>
-                <select name="vrstaMenija" value={meni.vrstaMenija} onChange={handleChange} required>
-                    <option value={0}disabled hidden>Izberi vrsto menija</option>
-                    {vrstaMenija && vrstaMenija.map((vrstaMenija) => (
-                        <option key={vrstaMenija.id} value={vrstaMenija.id}>{vrstaMenija.ime}</option>
-                    ))}
 
-                </select>
-                <br/>
-                <label>Opis</label>
-                <input type="text" name="opis" value={meni.opis} onChange={handleChange}/>
+
+                <Select labelId="demo-simple-select-label"
+                        id="demo-simple-select" name={"vrstaMenija"} value={meni.vrstaMenija} onChange={handleChange} required>
+                    <MenuItem value={0}disabled hidden>Izberi Vrsto menija</MenuItem>
+                    {vrstaMenija && vrstaMenija.map((vrstaMenija) => (
+                        <MenuItem key={vrstaMenija.id} value={vrstaMenija.id}>{vrstaMenija.ime}</MenuItem>
+                    ))}
+                </Select>
+                <TextField id="date" label="Datum" type="date" inputFormat="MM/DD/YYYY" name="datum" InputLabelProps={{
+                    shrink: true,
+                }} value={meni.datum} onChange={handleChange} required/>
+                <TextField id="outlined-basic" className="admin-create-user-form-input" label="Opis" variant="outlined" name="opis" value={meni.opis} onChange={handleChange} />
                 <button type="submit" className="submit">Potrdi</button>
             </form>
             </div>

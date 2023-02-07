@@ -7,7 +7,7 @@ import Homepage from "./Pages/home";
 import RequireAuth from "./app/RequireAuth";
 import Loading from "./components/loading";
 import NotFoundPage from "./Pages/404page/404";
-import AdminChecker from "./Pages/adminChecker";
+import AdminChecker from "./Pages/Admin/adminChecker";
 import ForgotPassword from "./Pages/forgotPassword";
 import AdminMainPage from "./Pages/Admin/AdminMainPage";
 import AdminCreateUser from "./Pages/Admin/AdminCreateUser";

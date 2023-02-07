@@ -54,8 +54,8 @@ const AdminAllCities = () => {
 
 
     return (
-        <div>
-            <h1>Admin All Cities</h1>
+        <div style={{height:"100vh", overflowY:"scroll"}}>
+            <h1>Vsi kraji, vpisani v bazo:</h1>
             <table>
                 <thead>
                 <tr>

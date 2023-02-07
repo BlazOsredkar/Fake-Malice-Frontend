@@ -3,7 +3,7 @@ import {backendAPIendpoint} from "../../App";
 import {useEffect, useState} from "react";
 import {CircularProgress} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-import "../../style/adminAllUsers.css";
+import "../../style/Admin/adminAllUsers.css";
 
 
 const AdminAllUsers = () => {
@@ -13,13 +13,16 @@ const AdminAllUsers = () => {
     const [neuspeh, setNeuspeh] = useState(false);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [spoli, setSpoli] = useState([]);
+    const [kraji, setKraji] = useState([]);
+    const [filteredKraji, setFilteredKraji] = useState([]);
+    const [razredi, setRazredi] = useState([]);
     const navigate = useNavigate();
 
     const getUsers = () => {
         axios.get(`${backendAPIendpoint}/user/all`, {withCredentials: true})
             .then(res => {
                 res.data.sort((a, b) => a.id - b.id);
-                //format the date with Intl.DateTimeFormat
                 res.data.map((item) => {
                     item.datumroj= new Intl.DateTimeFormat('en-GB').format(new Date(item.datumroj));
                 })
@@ -63,7 +66,7 @@ const AdminAllUsers = () => {
         const id = e.target.id;
         const confirm = window.confirm("Ali ste prepričani, da želite spremeniti uporabnikov status?");
         const admin = e.target.dataset.admin;
-        const newAdmin = admin === "true" ? false : true;
+        const newAdmin = admin !== "true";
         console.log(newAdmin);
         if (confirm) {
             axios.put(`${backendAPIendpoint}/user/update/${id}`, {isadmin:newAdmin}, {withCredentials: true})
@@ -76,15 +79,18 @@ const AdminAllUsers = () => {
                 })
         }
 
+
     }
+
 
     useEffect(() => {
         getUsers();
     },[]);
 
+
     return (
         <div>
-            <h1>Admin All Users</h1>
+            <h1>Vsi uporabniki</h1>
             <button onClick={() => navigate("/admin/createUser")} className="add-user">Dodaj uporabnika</button>
 
             {loading ? <CircularProgress/> : (
@@ -96,9 +102,11 @@ const AdminAllUsers = () => {
                     <th>Priimek</th>
                     <th>E-pošta</th>
                     <th>EMŠO</th>
-                    <th>Davčna številka</th>
                     <th>Datum rojstva</th>
                     <th>Telefon</th>
+                    <th>Spol</th>
+                    <th>Kraj</th>
+                    <th>Razred</th>
                     <th>Admin</th>
                     <th>Uredi</th>
                     <th>Izbriši</th>
@@ -112,9 +120,18 @@ const AdminAllUsers = () => {
                         <td>{user.priimek}</td>
                         <td>{user.eposta}</td>
                         <td>{user.emso}</td>
-                        <td>{user.davcna}</td>
                         <td>{user.datumroj}</td>
                         <td>{user.telefon}</td>
+                        <td>
+                            {user.spol?.ime || "N/A"}
+                        </td>
+                        <td>
+                            {user.kraj?.ime || "N/A"}
+                        </td>
+
+                        <td>
+                            {user.razred?.ime || "N/A"}
+                        </td>
                         <td onClick={handleChangeAdmin} id={user.id} data-admin={user.isadmin}>{user.isadmin.toString()}</td>
                         <td><button id={user.id} onClick={handleUpdate}>Uredi</button></td>
                         <td><button id={user.id} onClick={handleDelete}>Izbriši</button></td>

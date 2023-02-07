@@ -31,9 +31,10 @@ const AdminAllClasses = () => {
 
     }
 
-    const handleUpdate = (id) => {
-        navigate(`/admin/classes/update/${id}`);
-    }
+      const handleUpdate = (id) => {
+
+      }
+
 
     useEffect(() => {
         getClasses();
@@ -41,7 +42,7 @@ const AdminAllClasses = () => {
 
     return (
         <div>
-            <h1>Admin All Classes</h1>
+            <h1>Vsi razredi, vpisani v bazo:</h1>
             <table>
                 <thead>
                 <tr>

@@ -7,8 +7,6 @@ import {backendAPIendpoint} from "../../App";
 const AdminAllSchools = () => {
 
     const [schools, setSchools] = useState([]);
-    const [uspelo, setUspelo] = useState(false);
-    const [neuspeh, setNeuspeh] = useState(false);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -32,8 +30,10 @@ const AdminAllSchools = () => {
 
     }
 
-    const handleUpdate = (id) => {
-        navigate(`/admin/school/update/${id}`);
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        const id = e.target.id;
+        navigate(`../school/update/${id}`);
     }
 
     useEffect(() => {
@@ -43,7 +43,7 @@ const AdminAllSchools = () => {
 
     return (
         <div>
-            <h1>Admin All Schools</h1>
+            <h1>Vse šole, vpisane v bazo:</h1>
             <table>
                 <thead>
                 <tr>
@@ -60,7 +60,7 @@ const AdminAllSchools = () => {
                         <td>{item.id}</td>
                         <td>{item.ime}</td>
                         <td>{item.kratica}</td>
-                        <td><button>Update</button></td>
+                        <td><button onClick={handleUpdate} id={item.id} >Update</button></td>
                         <td><button>Delete</button></td>
                     </tr>
                 ))}

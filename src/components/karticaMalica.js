@@ -5,7 +5,7 @@ import {selectUser} from "../auth/userSlice";
 import axios from "axios";
 import {backendAPIendpoint} from "../App";
 
-const KarticaMalica = ({ime, opis, slika, id, reload}) => {
+const KarticaMalica = ({ime, opis, slika, id, reload, selected}) => {
 
   const user = useSelector(selectUser);
 
@@ -22,13 +22,22 @@ const KarticaMalica = ({ime, opis, slika, id, reload}) => {
     }
   }
 
+  const handleNaroci = async () => {
+    try {
+      await axios.post(`${backendAPIendpoint}/meni/order/`, {meni:id},{withCredentials: true});
+        reload();
+    }
+    catch (e) {}
+  }
+
+
 
 
   return (
     <>
       <div className="karticaMalic">
         <div className="karticaMalica__gumb">
-          {user.isadmin ?  <> </> : <button>Naroči</button>}
+          {user.isadmin || selected ?  <> </> : <button onClick={handleNaroci}>Naroči</button>}
           {user.isadmin ?  <button onClick={handleDeleteMeni}>Izbriši</button> : <> </>}
           {user.isadmin ?  <button>Uredi</button> : <> </>}
         </div>

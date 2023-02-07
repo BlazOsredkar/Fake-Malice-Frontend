@@ -2,9 +2,8 @@ import axios from "axios";
 import React, {useEffect, useState} from "react";
 import {backendAPIendpoint} from "../../App";
 
-import "../../style/adminCreateUser.css";
-import {Autocomplete, TextField} from "@mui/material";
-
+import "../../style/Admin/adminCreateUser.css";
+import {Autocomplete, Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 
 const AdminCreateUser = () => {
 
@@ -18,15 +17,17 @@ const AdminCreateUser = () => {
         datumroj: '',
         telefon: '',
         spol: 0,
-        kraj: 0,
+        kraj: '',
+        razred: '',
     });
 
     const [spoli, setSpoli] = useState([]);
     const [kraji, setKraji] = useState([]);
     const [filteredKraji, setFilteredKraji] = useState([]);
+    const [razredi, setRazredi] = useState([]);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
+    const handleChange = (e,_, data = null) => {
+        const { name, value } = data || e.target;
         setUser({ ...user, [name]: value });
     };
 
@@ -48,7 +49,8 @@ const AdminCreateUser = () => {
                 datumroj: '',
                 telefon: '',
                 spol: 0,
-                kraj: 0,
+                kraj: "",
+                razred: "",
             })
 
         })
@@ -71,7 +73,15 @@ const AdminCreateUser = () => {
             axios.get(`${backendAPIendpoint}/cities/all`, {withCredentials: true})
                 .then(res => {
                     setKraji(res.data);
-                    setFilteredKraji(res.data);
+
+                }
+                )
+    }
+
+    const getRazredi = (e) => {
+            axios.get(`${backendAPIendpoint}/classes/all`, {withCredentials: true})
+                .then(res => {
+                    setRazredi(res.data);
                 }
                 )
     }
@@ -79,67 +89,70 @@ const AdminCreateUser = () => {
     useEffect(() => {
         getSpol();
         getKraji();
+        getRazredi();
     } ,[]);
 
-    const handleSearch = (e) => {
-        const searchTerm = e.target.value || "";
-        if(searchTerm.length > 0) {
-        const filtered = kraji.filter(
-            (kraj) => kraj.ime.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 || kraj.postnaStevilka.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
-        );
-        setFilteredKraji(filtered);
-        } else {
-            setFilteredKraji(kraji);
-        }
-    }
 
     return (
         <div className={"admin-create-user"}>
             <div className={"admin-create-user-form"}>
-                <form autoComplete="off" onSubmit={handleSubmit}>
+                <FormControl autoComplete="off" >
                     <div className="input-container">
                         <div className="input-container-left">
-                            <label>Ime</label>
-                            <input type="text" name="ime" value={user.ime} onChange={handleChange} required/>
-                            <label>Priimek</label>
-                            <input type="text" name="priimek" value={user.priimek} onChange={handleChange} required/>
-                            <label>EMŠO</label>
-                            <input type="text" name="emso" value={user.emso} onChange={handleChange} required/>
-                            <label>E-pošta</label>
-                            <input type="email" name="eposta" value={user.eposta} onChange={handleChange} required/>
-                            <label>Spol</label>
-                            <select name="spol" value={user.spol} onChange={handleChange} required>
-                                <option value={0}disabled >Izberi spol</option>
+                            <TextField id="outlined-basic" className="admin-create-user-form-input" label="Ime" type="text" name="ime" value={user.ime} onChange={handleChange} required/>
+
+                            <TextField id="outlined-basic" type="text" className="admin-create-user-form-input" label="Priimek" name="priimek" value={user.priimek} onChange={handleChange} required/>
+
+                            <TextField id="outlined-basic" type="text" name="emso" className="admin-create-user-form-input" label="EMŠO" value={user.emso} onChange={handleChange} required/>
+
+                            <Select labelId="demo-simple-select-label"
+                            id="demo-simple-select" name="spol" value={user.spol} onChange={handleChange} required>
+                                <MenuItem value={0}disabled >Izberi spol</MenuItem>
                                 {user && spoli.map((spol) => (
-                                    <option key={spol.id} value={spol.ime}>{spol.ime}</option>
+                                    <MenuItem key={spol.id} value={spol.id}>{spol.ime}</MenuItem>
                                 ))}
-                            </select>
+                            </Select>
                             <Autocomplete
                                 disablePortal
                                 id="combo-box-demo"
-                                name={"kraj"}
+                                className={"admin-create-user-city-input"}
                                 options={kraji.map((kraj) =>  kraj.ime.trim()+", "+kraj.postnaStevilka)}
-
+                                onChange={(e, value) => handleChange(e,null, {name: "kraj", value: value})}
                                 sx={{ width: 300 }}
-                                renderInput={(params) => <TextField {...params} label="Kraj" onChange={handleChange} name={"kraj"} value={user.kraj} />}
+                                renderInput={(params) => <TextField {...params}
+                                                                    label="Kraj" onChange={handleChange} name={"kraj"} value={user.kraj} />}
                             />
+                            <TextField id="outlined-basic" label="E-pošta" variant="outlined" className="admin-create-user-form-input" type="email" name="eposta" value={user.eposta} onChange={handleChange} required/>
 
                         </div>
                         <div className="input-container-right">
-                            <label>Geslo</label>
-                            <input type="password" name="geslo" value={user.geslo} onChange={handleChange} required/>
-                            <label>Ponovi geslo</label>
-                            <input type="password" name="Ponovi Geslo" required/>
-                            <label>Telefon</label>
-                            <input type="text" name="telefon" value={user.telefon} onChange={handleChange} required/>
-                            <label>Naslov</label>
-                            <input type="text" name="naslov" value={user.naslov} onChange={handleChange} required/>
-                            <label>Datum rojstva</label>
-                            <input type="date" name="datumroj" value={user.datumroj} onChange={handleChange} required/>
+
+                            <TextField id="outlined-basic" className="admin-create-user-form-input" label="Geslo" variant="outlined" type="password" name="geslo" value={user.geslo} onChange={handleChange} required/>
+
+                            <TextField id="outlined-basic" className="admin-create-user-form-input" label="Geslo" variant="outlined" type="password"  name="Ponovi Geslo" required/>
+
+                            <TextField id="outlined-basic" className="admin-create-user-form-input" label="Telefon" variant="outlined" type="text" name="telefon" value={user.telefon} onChange={handleChange} required/>
+
+                            <TextField id="outlined-basic" className="admin-create-user-form-input" label="Naslov" variant="outlined" name="naslov" value={user.naslov} onChange={handleChange} required/>
+
+                            <Autocomplete
+                                disablePortal
+                                id="combo-box-demo"
+                                className={"admin-create-user-city-input"}
+                                options={razredi.map((razred) =>  ({id: razred.id, label: razred.ime}))}
+                                onChange={(e, value) => handleChange(e,null, {name: "razred", value: {id:value.id}})}
+                                sx={{ width: 300 }}
+                                renderInput={(params) => <TextField {...params}
+                                                                    label="Razred" onChange={handleChange} name={"razred"} value={user.razred} />}
+                            />
+                            <TextField id="date" label="Birthday" type="date" inputFormat="MM/DD/YYYY" name="datumroj" InputLabelProps={{
+                                shrink: true,
+                            }} value={user.datumroj} onChange={handleChange} required/>
                         </div>
                     </div>
-                    <button className="submit-button" type="submit">Potrdi</button>
-                </form>
+
+                    <Button className="submit-button" type="submit" onClick={handleSubmit}>Potrdi</Button>
+                </FormControl>
             </div>
         </div>
 

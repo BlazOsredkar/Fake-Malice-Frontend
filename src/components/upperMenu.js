@@ -35,9 +35,6 @@ const GlavniMeni = () => {
                 <li>
                   <Link to="/profil">Profil</Link>
                 </li>
-                <li>
-                  <Link to="/profil">Nastavitve</Link>
-                </li>
                 {user?.isadmin ? <li>
                     <Link to="/admin">Admin</Link>
                 </li> : <></>}

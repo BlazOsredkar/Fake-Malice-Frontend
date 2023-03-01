@@ -37,7 +37,7 @@ const KarticaMalica = ({ime, opis, slika, id, reload, selected}) => {
     <>
       <div className="karticaMalic">
         <div className="karticaMalica__gumb">
-          {user.isadmin || selected ?  <> </> : <button onClick={handleNaroci}>Naroči</button>}
+          {user.isadmin || selected ? selected && <button style={{backgroundColor: "green"}}>Naročeno</button> : <button onClick={handleNaroci}>Naroči</button>}
           {user.isadmin ?  <button onClick={handleDeleteMeni}>Izbriši</button> : <> </>}
           {user.isadmin ?  <button>Uredi</button> : <> </>}
         </div>

@@ -15,7 +15,6 @@ const AdminEditUser = () => {
         eposta: '',
         geslo: '',
         emso: '',
-        davcna: '',
         datumroj: '',
         telefon: '',
         spol: '',
@@ -82,7 +81,7 @@ const AdminEditUser = () => {
                 console.log(res);
                 console.log(res.data);
                 alert("Uporabnik uspešno urejen!")
-                navigate("/admin/allUsers");
+                navigate("/admin/user/all");
 
                 setUser({
                     ime: '',
@@ -90,7 +89,6 @@ const AdminEditUser = () => {
                     eposta: '',
                     geslo: '',
                     emso: '',
-                    davcna: '',
                     datumroj: '',
                     telefon: '',
                     spol: 0,

@@ -13,7 +13,6 @@ const AdminCreateUser = () => {
         eposta: '',
         geslo: '',
         emso: '',
-        davcna: '',
         datumroj: '',
         telefon: '',
         spol: 0,

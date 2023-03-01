@@ -44,7 +44,7 @@ const AdminAllCities = () => {
     }
 
     const handleUpdate = (id) => {
-        navigate(`/admin/cities/update/${id}`);
+        navigate(`/admin/city/update/${id}`);
     }
 
     useEffect(() => {

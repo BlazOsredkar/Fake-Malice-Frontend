@@ -14,10 +14,12 @@ import AdminCreateUser from "./Pages/Admin/AdminCreateUser";
 import AdminCreateMeni from "./Pages/Admin/AdminCreateMeni";
 import ResetPassword from "./Pages/resetPassword";
 import AdminAllUsers from "./Pages/Admin/AdminAllUsers";
+import Login from "./Pages/login";
+import Profile from "./Pages/profile";
 
 
-//const backendAPIendpoint = "http://localhost:5050/api";
-const backendAPIendpoint = "https://backend.malice.vrtogo.si/api";
+const backendAPIendpoint = "http://localhost:5050/api";
+//const backendAPIendpoint = "https://backend.malice.vrtogo.si/api";
 
 export { backendAPIendpoint };
 
@@ -25,25 +27,22 @@ export { backendAPIendpoint };
 
 function App() {
   return (
-      //ignore /api in url
-
     <BrowserRouter basename="/">
       <Routes>
         <Route path="/api/*" element={<Loading/>}/>
         <Route path="/" element={<RequireAuth />}>
           <Route path="/" element={<Homepage />} />
+          <Route path="/profil" element={<Profile />}/>
           <Route path="/admin" element={<AdminChecker />} >
-            <Route path="" element={<Navigate to={"/admin/createMeni"} />} />
+            <Route path="" element={<Navigate to={"/admin/meni/create"} />} />
             <Route path="*" element={<AdminMainPage/>} />
           </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/loading" element={<Loading />} />
-          <Route path="/forgotPassword" element={<ForgotPassword/>} />
-        <Route path={"/reset-password"} element={<ResetPassword/>} />
-
-
+          <Route path="/password/forgot" element={<ForgotPassword/>} />
+        <Route path={"/password/reset"} element={<ResetPassword/>} />
       </Routes>
     </BrowserRouter>
   );

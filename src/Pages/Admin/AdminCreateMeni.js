@@ -6,7 +6,7 @@ import "../../style/Admin/adminCreateMeni.css";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import AdminSidebar from "./AdminSidebar";
-import {Autocomplete, MenuItem, Select, TextField} from "@mui/material";
+import {Autocomplete, Button, MenuItem, Select, TextField} from "@mui/material";
 
 
 
@@ -74,24 +74,22 @@ const AdminCreateMeni = () => {
 
 
     return (
-        <div className="admin-create-meni">
-            <div className="admin-create-meni-form">
+        <div className="admin-create-user">
+            <div className="admin-create-user-form">
 
             <form onSubmit={handleSubmit}>
-
-
-                <Select labelId="demo-simple-select-label"
+                <Select className={"admin-create-user-form-input"} labelId="demo-simple-select-label"
                         id="demo-simple-select" name={"vrstaMenija"} value={meni.vrstaMenija} onChange={handleChange} required>
                     <MenuItem value={0}disabled hidden>Izberi Vrsto menija</MenuItem>
                     {vrstaMenija && vrstaMenija.map((vrstaMenija) => (
                         <MenuItem key={vrstaMenija.id} value={vrstaMenija.id}>{vrstaMenija.ime}</MenuItem>
                     ))}
                 </Select>
-                <TextField id="date" label="Datum" type="date" inputFormat="MM/DD/YYYY" name="datum" InputLabelProps={{
+                <TextField className={"admin-create-user-form-input"} id="date" label="Datum" type="date" inputFormat="MM/DD/YYYY" name="datum" InputLabelProps={{
                     shrink: true,
                 }} value={meni.datum} onChange={handleChange} required/>
                 <TextField id="outlined-basic" className="admin-create-user-form-input" label="Opis" variant="outlined" name="opis" value={meni.opis} onChange={handleChange} />
-                <button type="submit" className="submit">Potrdi</button>
+                <Button className="submit-button" type="submit" className="submit">Potrdi</Button>
             </form>
             </div>
             {uspelo ? <Alert severity="success">Meni uspešno ustvarjen</Alert> : null}

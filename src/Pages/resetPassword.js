@@ -8,7 +8,7 @@ import axios from "axios";
 
 const ResetPassword = () => {
 
-    //get token from url
+
     const location = useLocation();
     const [searchParams] = useSearchParams();
     const token = searchParams.get("token");
@@ -17,7 +17,6 @@ const ResetPassword = () => {
     console.log(token);
     console.log(email);
 
-    //send token, new password and confirm password to backend
     async function handleSubmit(e){
         e.preventDefault();
 

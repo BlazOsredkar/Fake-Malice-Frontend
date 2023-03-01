@@ -6,33 +6,33 @@ import {useEffect, useRef, useState} from "react";
 const sidebarNavItems = [
     {
         title: 'Ustvari meni',
-        path: '/admin/createMeni',
+        path: '/admin/meni/create',
         icon: <i className="bx bx-bowl-hot"></i>,
     },
     {
         title: 'Ustvari uporabnika',
-        path: '/admin/createUser',
+        path: '/admin/user/create',
         icon: <i className="bx bx-user-plus"></i>,
     },
     {
         title: 'Vsi uporabniki',
-        path: '/admin/allUsers',
+        path: '/admin/user/all',
         icon: <i className="bx bx-user"></i>,
 
     },
     {
         title: 'Vsi kraji',
-        path: '/admin/allCities',
+        path: '/admin/city/all',
         icon: <i className="bx bxs-city"></i>,
     },
     {
         title: 'Vsi razredi',
-        path: '/admin/allClasses',
+        path: '/admin/class/all',
         icon: <i className="bx bx-book"></i>,
     },
     {
         title: 'Vse šole',
-        path: '/admin/allSchools',
+        path: '/admin/school/all',
         icon: <i className="bx bxs-school"></i>,
     },
     {

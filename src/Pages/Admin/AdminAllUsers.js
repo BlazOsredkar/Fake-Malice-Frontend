@@ -40,7 +40,7 @@ const AdminAllUsers = () => {
     const  handleUpdate = (e) => {
         e.preventDefault();
         const id = e.target.id;
-        navigate(`/admin/editUser/${id}`);
+        navigate(`/admin/user/edit/${id}`);
     }
 
 

@@ -45,7 +45,7 @@ const AdminEditSchool = () => {
                 console.log(res);
                 console.log(res.data);
                 alert("Šola uspešno urejena!")
-                navigate("/admin/allschools");
+                navigate("/admin/school/all");
 
                 setSchool({
                     ime: '',

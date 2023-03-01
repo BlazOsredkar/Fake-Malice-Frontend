@@ -20,14 +20,14 @@ const AdminMainPage = () => {
 
             <AdminSidebar />
             <Routes path="/admin">
-                <Route path="/createUser" element={<AdminCreateUser/>} />
-                <Route path="/createMeni" element={<AdminCreateMeni/>} />
-                <Route path="/allUsers" element={<AdminAllUsers/>} />
-                <Route path="/editUser/:id" element={<AdminEditUser/>} />
+                <Route path="/user/create" element={<AdminCreateUser/>} />
+                <Route path="/meni/create" element={<AdminCreateMeni/>} />
+                <Route path="/user/all" element={<AdminAllUsers/>} />
+                <Route path="/user/edit/:id" element={<AdminEditUser/>} />
                 <Route path="/school/update/:id" element={<AdminEditSchool/>} />
-                <Route path="/allCities" element={<AdminAllCities/>}  />
-                <Route path="/allClasses" element={<AdminAllClasses/>}  />
-                <Route path="/allSchools" element={<AdminAllSchools/>} />
+                <Route path="/city/all" element={<AdminAllCities/>}  />
+                <Route path="/class/all" element={<AdminAllClasses/>}  />
+                <Route path="/school/all" element={<AdminAllSchools/>} />
             </Routes>
         </div>
     )

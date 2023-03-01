@@ -1,9 +1,7 @@
 import React from "react";
 import axios from "axios";
-import ScvLogo from '../style/school_logo.png';
 import {store} from "../app/store";
 import {setUserLoading, userLogin} from "../auth/userSlice";
-import {useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
 import {backendAPIendpoint} from "../App";
 import LoginImage from '../assets/Login_Malice.svg'
@@ -51,7 +49,7 @@ const Login = () => {
                           <input type="password" autoComplete="current-password" id="current-password" className="input inputPassword" name="geslo" placeholder="Geslo" required/>
                       </div>
                       <input className="button" type="submit" value="Prijava"/>
-                      <Link to="/forgotPassword" className="PozabilGeslo">Pozabljeno geslo?</Link>
+                      <Link to="/password/forgot" className="PozabilGeslo">Pozabljeno geslo?</Link>
                   </form>
               </div>
           </div>

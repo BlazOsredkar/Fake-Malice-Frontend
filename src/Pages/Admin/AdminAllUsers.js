@@ -82,6 +82,23 @@ const AdminAllUsers = () => {
 
     }
 
+    const handleChangeStanje = (e) => {
+        e.preventDefault();
+        const prompt = window.prompt("Vnesite novo stanje uporabnika");
+        const id = e.target.id;
+
+        if (prompt !== null) {
+            axios.put(`${backendAPIendpoint}/user/update/${id}`, {stanjerac:prompt}, {withCredentials: true})
+                .then(res => {
+                    setUspelo(true);
+                    getUsers();
+                })
+                .catch(err => {
+                    setNeuspeh(true);
+                })
+        }
+    }
+
 
     useEffect(() => {
         getUsers();
@@ -105,8 +122,10 @@ const AdminAllUsers = () => {
                     <th>Datum rojstva</th>
                     <th>Telefon</th>
                     <th>Spol</th>
+                    <th>Naslov</th>
                     <th>Kraj</th>
                     <th>Razred</th>
+                    <th>Stanje računa</th>
                     <th>Admin</th>
                     <th>Uredi</th>
                     <th>Izbriši</th>
@@ -125,6 +144,7 @@ const AdminAllUsers = () => {
                         <td>
                             {user.spol?.ime || "N/A"}
                         </td>
+                        <td>{user.naslov}</td>
                         <td>
                             {user.kraj?.ime || "N/A"}
                         </td>
@@ -132,6 +152,7 @@ const AdminAllUsers = () => {
                         <td>
                             {user.razred?.ime || "N/A"}
                         </td>
+                        <td onClick={handleChangeStanje} id={user.id}>{user.stanjerac} €</td>
                         <td onClick={handleChangeAdmin} id={user.id} data-admin={user.isadmin}>{user.isadmin.toString()}</td>
                         <td><button id={user.id} onClick={handleUpdate}>Uredi</button></td>
                         <td><button id={user.id} onClick={handleDelete}>Izbriši</button></td>

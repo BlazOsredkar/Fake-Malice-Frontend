@@ -39,10 +39,11 @@ export default function SelectMenu() {
 
     return (
         <>
-            <Calendar onChange={setDate} value={date} minDate={new Date()}/>
             <div className="kartice">
+            <Calendar onChange={setDate} value={date} minDate={new Date()}/>
+
             {menus && menus.map((menu) => (
-                <KarticaMalica key={menu.id} ime={menu.vrstaMenija.ime} opis={menu.opis || menu.vrstaMenija.opis} slika={menu.vrstaMenija.ikona} id={menu.id} reload={loadMenuOnDate} selected={selectedMenu == menu.id}/>
+                <KarticaMalica key={menu.id} ime={menu.vrstaMenija.ime} opis={menu.opis || menu.vrstaMenija.opis} slika={menu.vrstaMenija.ikona} id={menu.id} reload={loadMenuOnDate} selected={selectedMenu == menu.id} menuDate={menu.datum}/>
             ))}
 
             </div>

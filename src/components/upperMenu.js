@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "../style/upperMenu.css";
 import logo from "../assets/school_logo.png";
 import logoutIcon from "../assets/logoutIcon.png";
@@ -6,14 +6,14 @@ import {Link} from "react-router-dom";
 import {selectUser} from "../auth/userSlice";
 import {useSelector} from "react-redux";
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import axios from "axios";
+import {backendAPIendpoint} from "../App";
 
-const options = [
-  { value: "chocolate", label: "Profil" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
+
 
 const GlavniMeni = () => {
+
+
 
   const user = useSelector(selectUser);
 
@@ -30,11 +30,19 @@ const GlavniMeni = () => {
                   </Link>
                 </div>
                 <li>
+                  <Link to={""} style={{ cursor:'default', color: user.stanjerac <= 5 ? '#FF7D7D' : 'lightgreen' }}
+                        title={user.stanjerac <= 5 ? 'Prenizko stanje' : 'Razpoložljivo stanje'} >
+                    Stanje: {user.stanjerac} €
+                  </Link>
+                </li>
+
+                <li>
                   <Link to="/">Domov</Link>
                 </li>
                 <li>
                   <Link to="/profil">Profil</Link>
                 </li>
+
                 {user?.isadmin ? <li>
                     <Link to="/admin">Admin</Link>
                 </li> : <></>}

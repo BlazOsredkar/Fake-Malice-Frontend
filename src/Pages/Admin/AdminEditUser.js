@@ -37,6 +37,7 @@ const AdminEditUser = () => {
         axios.get(`${backendAPIendpoint}/user/find/${id}`, {withCredentials: true})
             .then(res => {
                 setUser(res.data);
+                console.log(res.data);
             })
             .catch(err => {
                 console.log(err);
@@ -124,23 +125,35 @@ const AdminEditUser = () => {
 
                             <TextField id="outlined-basic" type="text" name="emso" className="admin-create-user-form-input" label="EMŠO" value={user.emso} onChange={handleChange} required/>
 
-                            <Select labelId="demo-simple-select-label"
-                                    id="demo-simple-select" name="spol" value={user.spol} onChange={handleChange} required>
+                            {user.spol && <Select labelId="demo-simple-select-label" label={"Spol"}
+                                    id="demo-simple-select" name="spol" value={user.spol.id} onChange={handleChange} required>
                                 <MenuItem value={0}disabled >Izberi spol</MenuItem>
                                 {user && spoli.map((spol) => (
                                     <MenuItem key={spol.id} value={spol.id}>{spol.ime}</MenuItem>
                                 ))}
-                            </Select>
-                            <Autocomplete
+                            </Select>}
+                            {user.kraj && <Autocomplete
                                 disablePortal
                                 id="combo-box-demo"
+                                defaultValue={{id:user.kraj.id,label:user.kraj.ime + ", " + user.kraj.postnaStevilka}}
                                 className={"admin-create-user-city-input"}
-                                options={kraji.map((kraj) =>  kraj.ime.trim()+", "+kraj.postnaStevilka)}
-                                onChange={(e, value) => handleChange(e,null, {name: "kraj", value: value})}
+                                options={kraji.map((kraj) =>  ({id: kraj.id, label: kraj.ime + ", " + kraj.postnaStevilka}))}
+                                onChange={(e, value) => handleChange(e,null, {name: "kraj", value: {id:value.id}})}
                                 sx={{ width: 300 }}
                                 renderInput={(params) => <TextField {...params}
-                                                                    label="Kraj" onChange={handleChange} name={"kraj"} value={user.kraj} />}
-                            />
+                                                                    label="Kraj" onChange={handleChange} name={"kraj"} value={user.kraj.ime} />}
+                            />}
+                            {!user.kraj && <Autocomplete
+                                disablePortal
+                                id="combo-box-demo"
+                                defaultValue={{id:user.kraj.id,label:user.kraj.ime + ", " + user.kraj.postnaStevilka}}
+                                className={"admin-create-user-city-input"}
+                                options={kraji.map((kraj) =>  ({id: kraj.id, label: kraj.ime + ", " + kraj.postnaStevilka}))}
+                                onChange={(e, value) => handleChange(e,null, {name: "kraj", value: {id:value.id}})}
+                                sx={{ width: 300 }}
+                                renderInput={(params) => <TextField {...params}
+                                                                    label="Kraj" onChange={handleChange} name={"kraj"} value={user.kraj.ime} />}
+                            />}
                             <TextField id="outlined-basic" label="E-pošta" variant="outlined" className="admin-create-user-form-input" type="email" name="eposta" value={user.eposta} onChange={handleChange} required/>
 
                         </div>

@@ -14,7 +14,6 @@ const Homepage = () => {
     <>
       <GlavniMeni />
       <div className="main">
-          <StanjeRac />
         <SelectMenu />
       </div>
     </>

@@ -47,7 +47,7 @@ const KarticaMalica = ({ime, opis, slika, id, reload, selected, menuDate}) => {
     <>
       <div className="karticaMalic">
         <div className="karticaMalica__gumb">
-          {selected ? <button style={{backgroundColor: "green", cursor: "not-allowed"}} >Naročeno</button> : nowDate.getTime() !== date.getTime() ? <button onClick={handleNaroci}>Naroči</button> : null }
+          {selected && !user.isadmin ? <button style={{backgroundColor: "green", cursor: "not-allowed"}} >Naročeno</button> : nowDate.getTime() !== date.getTime() && !user.isadmin ? <button onClick={handleNaroci}>Naroči</button> : null }
           {user.isadmin ?  <button onClick={handleDeleteMeni}>Izbriši</button> : <> </>}
           {user.isadmin ?  <button>Uredi</button> : <> </>}
         </div>

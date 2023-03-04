@@ -86,8 +86,10 @@ const AdminAllUsers = () => {
         e.preventDefault();
         const prompt = window.prompt("Vnesite novo stanje uporabnika");
         const id = e.target.id;
+        console.log(prompt);
 
-        if (prompt !== null) {
+
+        if (prompt !== null && prompt !== "") {
             axios.put(`${backendAPIendpoint}/user/update/${id}`, {stanjerac:prompt}, {withCredentials: true})
                 .then(res => {
                     setUspelo(true);

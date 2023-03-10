@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import {backendAPIendpoint} from "../../App";
-
+import { makeStyles } from "@material-ui/core/styles";
 import "../../style/Admin/adminCreateUser.css";
 import {useNavigate, useParams} from "react-router-dom";
-import {Autocomplete, Button, FormControl, MenuItem, Select, TextField} from "@mui/material";
+import {Autocomplete, Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 
 
 const AdminEditUser = () => {
@@ -111,12 +111,13 @@ const AdminEditUser = () => {
         getRazredi();
     },[id]);
 
+    
 
 
     return (
         <div className={"admin-create-user"}>
             <div className={"admin-create-user-form"}>
-                <FormControl autoComplete="off" >
+                <FormControl autoComplete="off"   >
                     <div className="input-container">
                         <div className="input-container-left">
                             <TextField id="outlined-basic" className="admin-create-user-form-input" label="Ime" type="text" name="ime" value={user.ime} onChange={handleChange} required/>
@@ -125,13 +126,13 @@ const AdminEditUser = () => {
 
                             <TextField id="outlined-basic" type="text" name="emso" className="admin-create-user-form-input" label="EMŠO" value={user.emso} onChange={handleChange} required/>
 
-                            {user.spol && <Select labelId="demo-simple-select-label" label={"Spol"}
-                                    id="demo-simple-select" name="spol" value={user.spol.id} onChange={handleChange} required>
+                            <Select labelId="demo-simple-select-label" label={"Spol"}
+                                    id="demo-simple-select" name="spol" value={user.spol?.id} onChange={handleChange} required>
                                 <MenuItem value={0}disabled >Izberi spol</MenuItem>
                                 {user && spoli.map((spol) => (
                                     <MenuItem key={spol.id} value={spol.id}>{spol.ime}</MenuItem>
                                 ))}
-                            </Select>}
+                            </Select>
                             {user.kraj && <Autocomplete
                                 disablePortal
                                 id="combo-box-demo"
@@ -141,18 +142,17 @@ const AdminEditUser = () => {
                                 onChange={(e, value) => handleChange(e,null, {name: "kraj", value: {id:value.id}})}
                                 sx={{ width: 300 }}
                                 renderInput={(params) => <TextField {...params}
-                                                                    label="Kraj" onChange={handleChange} name={"kraj"} value={user.kraj.ime} />}
+                                                                    label="Kraj" onChange={handleChange} name={"kraj"} value={user.kraj?.ime} />}
                             />}
                             {!user.kraj && <Autocomplete
                                 disablePortal
                                 id="combo-box-demo"
-                                defaultValue={{id:user.kraj.id,label:user.kraj.ime + ", " + user.kraj.postnaStevilka}}
                                 className={"admin-create-user-city-input"}
                                 options={kraji.map((kraj) =>  ({id: kraj.id, label: kraj.ime + ", " + kraj.postnaStevilka}))}
                                 onChange={(e, value) => handleChange(e,null, {name: "kraj", value: {id:value.id}})}
                                 sx={{ width: 300 }}
                                 renderInput={(params) => <TextField {...params}
-                                                                    label="Kraj" onChange={handleChange} name={"kraj"} value={user.kraj.ime} />}
+                                                                    label="Kraj" onChange={handleChange} name={"kraj"} value={user.kraj?.ime} />}
                             />}
                             <TextField id="outlined-basic" label="E-pošta" variant="outlined" className="admin-create-user-form-input" type="email" name="eposta" value={user.eposta} onChange={handleChange} required/>
 
@@ -180,6 +180,9 @@ const AdminEditUser = () => {
                             <TextField id="date" label="Birthday" type="date" inputFormat="MM/DD/YYYY" name="datumroj" InputLabelProps={{
                                 shrink: true,
                             }} value={user.datumroj} onChange={handleChange} required/>
+
+
+
                         </div>
                     </div>
 

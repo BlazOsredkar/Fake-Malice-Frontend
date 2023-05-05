@@ -1,11 +1,20 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import {backendAPIendpoint} from "../../App";
-
 import "../../style/Admin/adminCreateUser.css";
+
 import {Autocomplete, Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
+import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
+import { Calendar } from 'primereact/calendar';
+import { InputText } from "primereact/inputtext";
+import {InputMask} from "primereact/inputmask";
+import {Dropdown} from "primereact/dropdown";
+import {Password} from "primereact/password";
+
 
 const AdminCreateUser = () => {
+    const navigate = useNavigate();
 
     const [user, setUser] = useState({
         ime: '',
@@ -35,8 +44,8 @@ const AdminCreateUser = () => {
 
         axios.post(`${backendAPIendpoint}/user/register`, user, {withCredentials: true})
             .then(res => {
-            alert("Uporabnik uspešno ustvarjen")
-                navigator.navigate("/admin/allUsers");
+                toast.success("Uporabnik uspešno ustvarjen");
+                navigate('/admin/user/all');
 
             setUser({
                 ime: '',
@@ -50,12 +59,18 @@ const AdminCreateUser = () => {
                 spol: 0,
                 kraj: "",
                 razred: "",
+                naslov: "",
             })
 
         })
             .catch(err => {
                 console.log(err);
-                alert(err.response.data.message.join('\n'));
+                try {
+                    toast.error(err.response.data.message.join(""));
+                }catch (e) {
+                    toast.error(err.response.data.message);
+                }
+
             })
 
     };
@@ -99,55 +114,33 @@ const AdminCreateUser = () => {
                 <FormControl autoComplete="off" >
                     <div className="input-container">
                         <div className="input-container-left">
-                            <TextField id="outlined-basic" className="admin-create-user-form-input" label="Ime" type="text" name="ime" value={user.ime} onChange={handleChange} required/>
+                            <InputText id="ime" value={user.ime} name="ime" placeholder="Ime" onChange={handleChange} required/>
+                            <InputText id="ime" value={user.priimek} name="priimek" placeholder="Priimek" onChange={handleChange} required/>
+                            <InputMask id="emso" mask="9999999999999" placeholder="EMŠO" name={"emso"} onChange={handleChange} value={user.emso} required></InputMask>
 
-                            <TextField id="outlined-basic" type="text" className="admin-create-user-form-input" label="Priimek" name="priimek" value={user.priimek} onChange={handleChange} required/>
+                            <Dropdown value={user.spol} name={"spol"} onChange={handleChange} options={spoli} optionLabel="ime" placeholder="Spol" className="w-full md:w-14rem" />
+                            <Dropdown value={user.kraj} onChange={(e) => handleChange(e, null, {name: "kraj", value: e.value})} options={kraji.map((kraj) => ({ label: kraj.ime.trim() + ", " + kraj.postnaStevilka, value: kraj.ime.trim() + ", " + kraj.postnaStevilka }))}
+                                      optionLabel="label" filter filterBy="label" placeholder="Kraj"  />
 
-                            <TextField id="outlined-basic" type="text" name="emso" className="admin-create-user-form-input" label="EMŠO" value={user.emso} onChange={handleChange} required/>
-
-                            <Select labelId="demo-simple-select-label"
-                            id="demo-simple-select" name="spol" value={user.spol} onChange={handleChange} required>
-                                <MenuItem value={0}disabled >Izberi spol</MenuItem>
-                                {user && spoli.map((spol) => (
-                                    <MenuItem key={spol.id} value={spol.id}>{spol.ime}</MenuItem>
-                                ))}
-                            </Select>
-                            <Autocomplete
-                                disablePortal
-                                id="combo-box-demo"
-                                className={"admin-create-user-city-input"}
-                                options={kraji.map((kraj) =>  kraj.ime.trim()+", "+kraj.postnaStevilka)}
-                                onChange={(e, value) => handleChange(e,null, {name: "kraj", value: value})}
-                                sx={{ width: 300 }}
-                                renderInput={(params) => <TextField {...params}
-                                                                    label="Kraj" onChange={handleChange} name={"kraj"} value={user.kraj} />}
-                            />
-                            <TextField id="outlined-basic" label="E-pošta" variant="outlined" className="admin-create-user-form-input" type="email" name="eposta" value={user.eposta} onChange={handleChange} required/>
+                            <InputText id="eposta" value={user.eposta} name="eposta" placeholder="E-pošta" type="email" onChange={handleChange} required/>
 
                         </div>
                         <div className="input-container-right">
 
-                            <TextField id="outlined-basic" className="admin-create-user-form-input" label="Geslo" variant="outlined" type="password" name="geslo" value={user.geslo} onChange={handleChange} required/>
+                            <Password value={user.geslo} onChange={handleChange} name={"geslo"} placeholder={"Geslo"}
+                                      promptLabel="Izberi geslo" weakLabel="Prelahko geslo" mediumLabel="Srednje geslo" strongLabel="Dobro geslo" toggleMask />
+                            <Password placeholder={"Ponovi geslo"} name={"ponovi-geslo"} feedback={false} toggleMask/>
 
-                            <TextField id="outlined-basic" className="admin-create-user-form-input" label="Geslo" variant="outlined" type="password"  name="Ponovi Geslo" required/>
 
-                            <TextField id="outlined-basic" className="admin-create-user-form-input" label="Telefon" variant="outlined" type="text" name="telefon" value={user.telefon} onChange={handleChange} required/>
+                            <InputMask id="telefon" name={"telefon"} value={user.telefon} onChange={handleChange} mask="+(999)99-999-999" placeholder="+(386)99-999-999"></InputMask>
 
-                            <TextField id="outlined-basic" className="admin-create-user-form-input" label="Naslov" variant="outlined" name="naslov" value={user.naslov} onChange={handleChange} required/>
+                            <InputText id="naslov" value={user.naslov} name="naslov" placeholder="Naslov" onChange={handleChange} required/>
+                            <Dropdown value={user.razred.id} onChange={(e) => handleChange(e, null, {name: "razred", value: {id: e.value}})}
+                                      options={razredi.map((razred) => ({ label: razred.ime, value: razred.id }))}
+                                      optionLabel="label" placeholder="Razred"/>
 
-                            <Autocomplete
-                                disablePortal
-                                id="combo-box-demo"
-                                className={"admin-create-user-city-input"}
-                                options={razredi.map((razred) =>  ({id: razred.id, label: razred.ime}))}
-                                onChange={(e, value) => handleChange(e,null, {name: "razred", value: {id:value.id}})}
-                                sx={{ width: 300 }}
-                                renderInput={(params) => <TextField {...params}
-                                                                    label="Razred" onChange={handleChange} name={"razred"} value={user.razred} />}
-                            />
-                            <TextField id="date" label="Birthday" type="date" inputFormat="MM/DD/YYYY" name="datumroj" InputLabelProps={{
-                                shrink: true,
-                            }} value={user.datumroj} onChange={handleChange} required/>
+
+                            <Calendar id="date" name={"datumroj"} value={user.datumroj} onChange={handleChange}  showIcon />
                         </div>
                     </div>
 

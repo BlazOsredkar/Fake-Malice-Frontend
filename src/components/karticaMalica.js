@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import {selectUser} from "../auth/userSlice";
 import axios from "axios";
 import {backendAPIendpoint} from "../App";
+import {toast} from "react-toastify";
 
 const KarticaMalica = ({ime, opis, slika, id, reload, selected, menuDate}) => {
 
@@ -26,10 +27,13 @@ const KarticaMalica = ({ime, opis, slika, id, reload, selected, menuDate}) => {
 
   const handleNaroci = async () => {
     try {
-      await axios.post(`${backendAPIendpoint}/meni/order/`, {meni:id},{withCredentials: true});
+      await axios.post(`${backendAPIendpoint}/meni/order/`, {meni:id, datum:menuDate},{withCredentials: true});
+      toast("Meni naročen!", {type: "success"})
         reload();
     }
-    catch (e) {}
+    catch (e) {
+        toast("Meni ni bil naročen!", {type: "error"})
+    }
   }
 
   useEffect(() => {

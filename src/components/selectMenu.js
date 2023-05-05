@@ -3,6 +3,8 @@ import axios from "axios";
 import Calendar from "react-calendar";
 import KarticaMalica from "./karticaMalica";
 import {backendAPIendpoint} from "../App";
+import React from 'react';
+import {toast} from "react-toastify";
 
 
 export default function SelectMenu() {
@@ -16,6 +18,9 @@ export default function SelectMenu() {
         try {
 
             const response = await axios.get(`${backendAPIendpoint}/meni?datum=${date}`, {withCredentials: true});
+            if(response.data.length === 0) {
+                toast("Na ta datum ni menija!", {type: "error"});
+            }
             response.data.sort((a, b) => a.vrstaMenija.id - b.vrstaMenija.id);
             setMenus(response.data);
 
@@ -43,7 +48,7 @@ export default function SelectMenu() {
             <Calendar onChange={setDate} value={date} minDate={new Date()}/>
 
             {menus && menus.map((menu) => (
-                <KarticaMalica key={menu.id} ime={menu.vrstaMenija.ime} opis={menu.opis || menu.vrstaMenija.opis} slika={menu.vrstaMenija.ikona} id={menu.id} reload={loadMenuOnDate} selected={selectedMenu == menu.id} menuDate={menu.datum}/>
+                <KarticaMalica key={menu.id} ime={menu.vrstaMenija.ime} opis={menu.opis || menu.vrstaMenija.opis} slika={menu.vrstaMenija.ikona} id={menu.id} reload={loadMenuOnDate} selected={selectedMenu === menu.id} menuDate={menu.datum.toString()}/>
             ))}
 
             </div>

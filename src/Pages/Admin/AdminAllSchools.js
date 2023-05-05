@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {backendAPIendpoint} from "../../App";
+import React from 'react';
+
 
 
 const AdminAllSchools = () => {
@@ -26,15 +28,7 @@ const AdminAllSchools = () => {
 
     }
 
-    const handleDelete = (id) => {
 
-    }
-
-    const handleUpdate = (e) => {
-        e.preventDefault();
-        const id = e.target.id;
-        navigate(`../school/update/${id}`);
-    }
 
     useEffect(() => {
         getSchools();
@@ -43,15 +37,13 @@ const AdminAllSchools = () => {
 
     return (
         <div>
-            <h1>Vse šole, vpisane v bazo:</h1>
+            <h1>Šole na voljo:</h1>
             <table>
                 <thead>
                 <tr>
                     <th>ID</th>
                     <th>Ime</th>
                     <th>Kratica</th>
-                    <th>Uredi</th>
-                    <th>Izbriši</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -60,8 +52,6 @@ const AdminAllSchools = () => {
                         <td>{item.id}</td>
                         <td>{item.ime}</td>
                         <td>{item.kratica}</td>
-                        <td><button onClick={handleUpdate} id={item.id} >Update</button></td>
-                        <td><button>Delete</button></td>
                     </tr>
                 ))}
                 </tbody>

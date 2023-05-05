@@ -10,12 +10,11 @@ import NotFoundPage from "./Pages/404page/404";
 import AdminChecker from "./Pages/Admin/adminChecker";
 import ForgotPassword from "./Pages/forgotPassword";
 import AdminMainPage from "./Pages/Admin/AdminMainPage";
-import AdminCreateUser from "./Pages/Admin/AdminCreateUser";
-import AdminCreateMeni from "./Pages/Admin/AdminCreateMeni";
 import ResetPassword from "./Pages/resetPassword";
-import AdminAllUsers from "./Pages/Admin/AdminAllUsers";
-import Login from "./Pages/login";
 import Profile from "./Pages/profile";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+
 
 
 const backendAPIendpoint = "http://localhost:5050/api";

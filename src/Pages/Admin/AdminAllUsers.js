@@ -4,6 +4,9 @@ import {useEffect, useState} from "react";
 import {CircularProgress} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import "../../style/Admin/adminAllUsers.css";
+import React from 'react';
+import {toast} from "react-toastify";
+
 
 
 const AdminAllUsers = () => {
@@ -52,10 +55,12 @@ const AdminAllUsers = () => {
             axios.delete(`${backendAPIendpoint}/user/delete/${id}`, {withCredentials: true})
                 .then(res => {
                     setUspelo(true);
+                    toast.success("Uporabnik uspešno izbrisan");
                     getUsers();
                 })
                 .catch(err => {
                     setNeuspeh(true);
+                    toast.error("Napaka pri brisanju uporabnika");
                 })
         }
 
@@ -72,9 +77,11 @@ const AdminAllUsers = () => {
             axios.put(`${backendAPIendpoint}/user/update/${id}`, {isadmin:newAdmin}, {withCredentials: true})
                 .then(res => {
                     setUspelo(true);
+                    toast.success("Status uspešno spremenjen");
                     getUsers();
                 })
                 .catch(err => {
+                    toast.error("Napaka pri spremembi statusa");
                     setNeuspeh(true);
                 })
         }
@@ -93,10 +100,12 @@ const AdminAllUsers = () => {
             axios.put(`${backendAPIendpoint}/user/update/${id}`, {stanjerac:prompt}, {withCredentials: true})
                 .then(res => {
                     setUspelo(true);
+                    toast.success("Stanje uspešno spremenjeno");
                     getUsers();
                 })
                 .catch(err => {
                     setNeuspeh(true);
+                    toast.error("Napaka pri spremembi stanja");
                 })
         }
     }
@@ -148,7 +157,7 @@ const AdminAllUsers = () => {
                         </td>
                         <td>{user.naslov}</td>
                         <td>
-                            {user.kraj?.ime || "N/A"}
+                            {user.kraj?.ime || "N/A"}, {user.kraj?.postnaStevilka || ""}
                         </td>
 
                         <td>

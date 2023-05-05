@@ -8,6 +8,7 @@ import LoginImage from '../assets/Login_Malice.svg'
 
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
+import {toast} from "react-toastify";
 
 const Login = () => {
     async function handleSubmit(e){
@@ -23,11 +24,19 @@ const Login = () => {
             if(response.status === 200){
                 const odgovor = await axios.get(`${backendAPIendpoint}/user`, {withCredentials:true});
                 if(odgovor.status === 200){
+                    toast("Uspešna prijava", {type: "success"})
                     store.dispatch(userLogin(odgovor.data));
                 }
+            }else {
+                toast("Napačen email ali geslo", {type: "error"})
             }
+
+
         }
-        catch (e) {}
+        catch (e) {
+            toast("Prijava trenutno ni možna", {type: "info"})
+            console.log(e);
+        }
         store.dispatch(setUserLoading(false));
 
     }

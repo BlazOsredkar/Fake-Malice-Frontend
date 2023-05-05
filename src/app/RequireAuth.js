@@ -7,6 +7,8 @@ import {store} from "./store";
 import {useEffect} from "react";
 import Loading from "../components/loading";
 import {backendAPIendpoint} from "../App";
+import React from 'react';
+
 
 const RequireAuth = () => {
 

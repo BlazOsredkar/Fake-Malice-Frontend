@@ -7,6 +7,12 @@ import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import AdminSidebar from "./AdminSidebar";
 import {Autocomplete, Button, MenuItem, Select, TextField} from "@mui/material";
+import { ToastContainer, toast } from 'react-toastify';
+import {Dropdown} from "primereact/dropdown";
+import {Calendar} from "primereact/calendar";
+import {InputText} from "primereact/inputtext";
+
+
 
 
 
@@ -25,13 +31,14 @@ const AdminCreateMeni = () => {
     }
     );
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
+    const handleChange = (e, data) => {
+        const { name, value } = data || e.target;
         setMeni({ ...meni, [name]: value });
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         console.log(meni);
         axios.post(`${backendAPIendpoint}/meni/create`, meni, {withCredentials: true})
             .then(res => {
@@ -45,10 +52,30 @@ const AdminCreateMeni = () => {
 
                     )
                 setUspelo(true);
+                toast.success('Meni uspešno ustvarjen!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
                 }
             )
             .catch(err => {
                 setNeuspeh(true);
+                toast.error('Meni ni bil ustvarjen!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
             }
             )
 
@@ -70,30 +97,23 @@ const AdminCreateMeni = () => {
     }
     , []);
 
+    const notify = () => toast("Wow so easy!");
 
 
 
     return (
-        <div className="admin-create-user">
-            <div className="admin-create-user-form">
+        <div className="admin-create-meni">
+            <div className="admin-create-meni-form">
 
             <form onSubmit={handleSubmit}>
-                <Select className={"admin-create-user-form-input"} labelId="demo-simple-select-label"
-                        id="demo-simple-select" name={"vrstaMenija"} value={meni.vrstaMenija} onChange={handleChange} required>
-                    <MenuItem value={0}disabled hidden>Izberi Vrsto menija</MenuItem>
-                    {vrstaMenija && vrstaMenija.map((vrstaMenija) => (
-                        <MenuItem key={vrstaMenija.id} value={vrstaMenija.id}>{vrstaMenija.ime}</MenuItem>
-                    ))}
-                </Select>
-                <TextField className={"admin-create-user-form-input"} id="date" label="Datum" type="date" inputFormat="MM/DD/YYYY" name="datum" InputLabelProps={{
-                    shrink: true,
-                }} value={meni.datum} onChange={handleChange} required/>
-                <TextField id="outlined-basic" className="admin-create-user-form-input" label="Opis" variant="outlined" name="opis" value={meni.opis} onChange={handleChange} />
+                <Dropdown value={meni.vrstaMenija} onChange={(e) => handleChange(e, null, {name: "vrstaMenija", value: e.value})}
+                          options={vrstaMenija ? vrstaMenija.map((vm) => ({ label: vm.ime, value: vm.id })) : []}
+                          optionLabel="label" placeholder="Izberi Vrsto menija" />
+                <Calendar className={"admin-create-user-meni-input"}  id="date" name={"datum"} value={meni.datum} onChange={handleChange}  showIcon />
+                <InputText id="naslov" className={"admin-create-meni-form-input"} value={meni.opis} name="Opis" placeholder="Opis" onChange={handleChange} required/>
                 <Button className="submit-button" type="submit" className="submit">Potrdi</Button>
             </form>
             </div>
-            {uspelo ? <Alert severity="success">Meni uspešno ustvarjen</Alert> : null}
-            {neuspeh ? <Alert severity="error">Meni ni bil ustvarjen</Alert> : null}
         </div>
     )
 }

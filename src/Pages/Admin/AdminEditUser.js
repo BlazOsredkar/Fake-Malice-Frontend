@@ -4,7 +4,11 @@ import {backendAPIendpoint} from "../../App";
 import { makeStyles } from "@material-ui/core/styles";
 import "../../style/Admin/adminCreateUser.css";
 import {useNavigate, useParams} from "react-router-dom";
-import {Autocomplete, Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
+import {InputText} from "primereact/inputtext";
+import {Dropdown} from "primereact/dropdown";
+import {InputMask} from "primereact/inputmask";
+import {Calendar} from "primereact/calendar";
+import {Button, FormControl} from "@mui/material";
 
 
 const AdminEditUser = () => {
@@ -15,11 +19,13 @@ const AdminEditUser = () => {
         eposta: '',
         geslo: '',
         emso: '',
+        davcna: '',
         datumroj: '',
         telefon: '',
-        spol: '',
+        spol: 0,
         kraj: '',
-        razred: '',
+        razred: "",
+        naslov: "",
     });
 
     const [spoli, setSpoli] = useState([]);
@@ -90,11 +96,13 @@ const AdminEditUser = () => {
                     eposta: '',
                     geslo: '',
                     emso: '',
+                    davcna: '',
                     datumroj: '',
                     telefon: '',
                     spol: 0,
-                    kraj: '',
-                    razred: '',
+                    kraj: "",
+                    razred: "",
+                    naslov: "",
                 })
 
             })
@@ -117,74 +125,45 @@ const AdminEditUser = () => {
     return (
         <div className={"admin-create-user"}>
             <div className={"admin-create-user-form"}>
-                <FormControl autoComplete="off"   >
+                <FormControl autoComplete="off" >
                     <div className="input-container">
                         <div className="input-container-left">
-                            <TextField id="outlined-basic" className="admin-create-user-form-input" label="Ime" type="text" name="ime" value={user.ime} onChange={handleChange} required/>
+                            <InputText id="ime" value={user.ime} name="ime" placeholder="Ime" onChange={handleChange} required />
+                            <InputText id="priimek" value={user.priimek} name="priimek" placeholder="Priimek" onChange={handleChange} required />
+                            <InputMask id="emso" mask="9999999999999" placeholder="EMŠO" name="emso" onChange={handleChange} value={user.emso} required />
 
-                            <TextField id="outlined-basic" type="text" className="admin-create-user-form-input" label="Priimek" name="priimek" value={user.priimek} onChange={handleChange} required/>
+                            <Dropdown value={user.spol} name="spol" onChange={handleChange} options={spoli} optionLabel="ime" placeholder="Spol" className="w-full md:w-14rem" />
+                            <Dropdown value={user.kraj?.id} name="kraj" onChange={handleChange} options={kraji.map(kraj => ({label: kraj.ime + ", " + kraj.postnaStevilka, value: kraj.id}))} placeholder="Kraj" className="w-full md:w-14rem" />
 
-                            <TextField id="outlined-basic" type="text" name="emso" className="admin-create-user-form-input" label="EMŠO" value={user.emso} onChange={handleChange} required/>
-
-                            <Select labelId="demo-simple-select-label" label={"Spol"}
-                                    id="demo-simple-select" name="spol" value={user.spol?.id} onChange={handleChange} required>
-                                <MenuItem value={0}disabled >Izberi spol</MenuItem>
-                                {user && spoli.map((spol) => (
-                                    <MenuItem key={spol.id} value={spol.id}>{spol.ime}</MenuItem>
-                                ))}
-                            </Select>
-                            {user.kraj && <Autocomplete
-                                disablePortal
-                                id="combo-box-demo"
-                                defaultValue={{id:user.kraj.id,label:user.kraj.ime + ", " + user.kraj.postnaStevilka}}
-                                className={"admin-create-user-city-input"}
-                                options={kraji.map((kraj) =>  ({id: kraj.id, label: kraj.ime + ", " + kraj.postnaStevilka}))}
-                                onChange={(e, value) => handleChange(e,null, {name: "kraj", value: {id:value.id}})}
-                                sx={{ width: 300 }}
-                                renderInput={(params) => <TextField {...params}
-                                                                    label="Kraj" onChange={handleChange} name={"kraj"} value={user.kraj?.ime} />}
-                            />}
-                            {!user.kraj && <Autocomplete
-                                disablePortal
-                                id="combo-box-demo"
-                                className={"admin-create-user-city-input"}
-                                options={kraji.map((kraj) =>  ({id: kraj.id, label: kraj.ime + ", " + kraj.postnaStevilka}))}
-                                onChange={(e, value) => handleChange(e,null, {name: "kraj", value: {id:value.id}})}
-                                sx={{ width: 300 }}
-                                renderInput={(params) => <TextField {...params}
-                                                                    label="Kraj" onChange={handleChange} name={"kraj"} value={user.kraj?.ime} />}
-                            />}
-                            <TextField id="outlined-basic" label="E-pošta" variant="outlined" className="admin-create-user-form-input" type="email" name="eposta" value={user.eposta} onChange={handleChange} required/>
-
-                        </div>
-                        <div className="input-container-right">
-
-                            <TextField id="outlined-basic" className="admin-create-user-form-input" label="Geslo" variant="outlined" type="password" name="geslo" value={user.geslo} onChange={handleChange} required/>
-
-                            <TextField id="outlined-basic" className="admin-create-user-form-input" label="Geslo" variant="outlined" type="password"  name="Ponovi Geslo" required/>
-
-                            <TextField id="outlined-basic" className="admin-create-user-form-input" label="Telefon" variant="outlined" type="text" name="telefon" value={user.telefon} onChange={handleChange} required/>
-
-                            <TextField id="outlined-basic" className="admin-create-user-form-input" label="Naslov" variant="outlined" name="naslov" value={user.naslov} onChange={handleChange} required/>
-
-                            <Autocomplete
-                                disablePortal
-                                id="combo-box-demo"
-                                className={"admin-create-user-city-input"}
-                                options={razredi.map((razred) =>  ({id: razred.id, label: razred.ime}))}
-                                onChange={(e, value) => handleChange(e,null, {name: "razred", value: {id:value.id}})}
-                                sx={{ width: 300 }}
-                                renderInput={(params) => <TextField {...params}
-                                                                    label="Razred" onChange={handleChange} name={"razred"} value={user.razred} />}
+                            <Dropdown
+                                value={user.kraj?.id}
+                                name={"kraj"}
+                                onChange={(e) => handleChange(e, null, {name: "kraj", value: e.value})}
+                                options={kraji.map((kraj) => ({
+                                    label: kraj.ime.trim() + ", " + kraj.postnaStevilka,
+                                    value: kraj.id
+                                }))}
+                                optionLabel="label"
+                                filter
+                                filterBy="label"
+                                placeholder="Kraj"
                             />
-                            <TextField id="date" label="Birthday" type="date" inputFormat="MM/DD/YYYY" name="datumroj" InputLabelProps={{
-                                shrink: true,
-                            }} value={user.datumroj} onChange={handleChange} required/>
 
-
-
+                            <InputText id="eposta" value={user.eposta} name="eposta" placeholder="E-pošta" type="email" onChange={handleChange} required />
                         </div>
-                    </div>
+
+                        <div className="input-container-right">
+                            <InputText id="geslo" value={user.geslo} name="geslo" placeholder="Geslo" type="password" onChange={handleChange} required />
+                            <InputText id="ponovi-geslo" name="ponoviGeslo" placeholder="Ponovi Geslo" type="password" required />
+                            <InputText id="telefon" value={user.telefon} name="telefon" placeholder="Telefon" onChange={handleChange} required />
+                            <InputText id="naslov" value={user.naslov} name="naslov" placeholder="Naslov" onChange={handleChange} required />
+
+                            <Dropdown value={user.razred?.id} name="razred" onChange={handleChange} options={razredi.map(razred => ({label: razred.ime, value: razred.id}))} placeholder="Razred" className="w-full md:w-14rem" />
+
+                            <Calendar id="datumroj" name="datumroj" value={user.datumroj} onChange={handleChange}  showIcon />
+                            <InputText id="datumroj" value={user.datumroj} name="datumroj" type="date" placeholder="Datum rojstva" onChange={handleChange} required />
+                        </div>
+            </div>
 
                     <Button className="submit-button" type="submit" onClick={handleSubmit}>Potrdi</Button>
                 </FormControl>

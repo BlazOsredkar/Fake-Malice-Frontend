@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import React from 'react';
+
 import {backendAPIendpoint} from "../../App";
 
 
@@ -48,7 +50,6 @@ const AdminAllClasses = () => {
                 <tr>
                     <th>ID</th>
                     <th>Ime</th>
-                    <th>Šolsko leto</th>
                     <th>Uredi</th>
                     <th>Izbriši</th>
                 </tr>
@@ -58,7 +59,6 @@ const AdminAllClasses = () => {
                     <tr key={item.id}>
                         <td>{item.id}</td>
                         <td>{item.ime}</td>
-                        <td>{item.sol_leto}</td>
                         <td><button onClick={() => handleUpdate(item.id)}>Update</button></td>
                         <td><button onClick={() => handleDelete(item.id)}>Delete</button></td>
                     </tr>

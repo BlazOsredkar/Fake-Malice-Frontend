@@ -5,6 +5,7 @@ import {backendAPIendpoint} from "../App";
 import "../style/forgotPassword.css";
 import LogoImageForgotPassword from '../assets/LogoImageForgotPassword.svg'
 import {Link} from "react-router-dom";
+import {toast} from "react-toastify";
 
 const ForgotPassword = () => {
 
@@ -22,12 +23,12 @@ const [eposta, setEmail] = useState("");
             const response = await axios.post(`${backendAPIendpoint}/user/forgotPassword`, {eposta}, {withCredentials:true})
             if(response.status === 200){
                 setEmailExists(true);
-                alert("Na vaš email smo poslali povezavo za ponastavitev gesla.");
+                toast("Na vaš email smo poslali povezavo za ponastavitev gesla." , {type: "success"});
             }
         }
         catch (e) {
             setEmailExists(false);
-            alert("Uporabnik s tem emailom ne obstaja.");
+            toast("Uporabnik s tem emailom ne obstaja." , {type: "error"});
         }
 
 

@@ -80,13 +80,15 @@ const AdminCreateMeni = () => {
     };
 
     const getVrsteMenija = () => {
-        axios.get(`${backendAPIendpoint}/meni/vrste`, {withCredentials: true})
-            .then(res => {
-                    res.data.sort((a, b) => a.id - b.id);
-                    setVrstaMenija(res.data);
-                }
-            )
-    }
+        axios
+            .get(`${backendAPIendpoint}/meni/vrste`, { withCredentials: true })
+            .then((res) => {
+                const filteredVrsteMenija = res.data
+                    .filter((vm) => vm.ime !== "Brez Malice")
+                    .sort((a, b) => a.id - b.id);
+                setVrstaMenija(filteredVrsteMenija);
+            });
+    };
 
 
 

@@ -17,8 +17,8 @@ import "primereact/resources/primereact.min.css";
 
 
 
-const backendAPIendpoint = "http://localhost:5050/api";
-//const backendAPIendpoint = "https://backend.malice.vrtogo.si/api";
+//const backendAPIendpoint = "http://localhost:5050/api";
+const backendAPIendpoint = "https://backend.malice.vrtogo.si/api";
 
 export { backendAPIendpoint };
 

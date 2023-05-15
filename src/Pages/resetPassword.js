@@ -14,8 +14,6 @@ const ResetPassword = () => {
     const token = searchParams.get("token");
     const email = searchParams.get("email");
 
-    console.log(token);
-    console.log(email);
 
     async function handleSubmit(e){
         e.preventDefault();

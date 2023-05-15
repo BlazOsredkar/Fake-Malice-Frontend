@@ -38,12 +38,14 @@ const GlavniMeni = () => {
                 {user?.isadmin ? <li>
                     <Link to="/admin">Admin</Link>
                 </li> : <></>}
-                <li>
+                {user?.isadmin ? <li>
+                </li> : <li>
                   <Link to={""} style={{ cursor:'default', color: user.stanjerac <= 5 ? '#FF7D7D' : 'lightgreen' }}
                         title={user.stanjerac <= 5 ? 'Prenizko stanje' : 'Razpoložljivo stanje'} >
                     Stanje: {user.stanjerac} €
                   </Link>
-                </li>
+                </li>}
+
                 <div className="profile">
                   <Link to="/logout">
                     <ExitToAppIcon />

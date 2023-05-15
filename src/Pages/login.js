@@ -35,7 +35,6 @@ const Login = () => {
         }
         catch (e) {
             toast("Prijava trenutno ni možna", {type: "info"})
-            console.log(e);
         }
         store.dispatch(setUserLoading(false));
 

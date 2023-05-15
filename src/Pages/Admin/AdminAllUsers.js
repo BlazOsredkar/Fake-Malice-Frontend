@@ -72,7 +72,6 @@ const AdminAllUsers = () => {
         const confirm = window.confirm("Ali ste prepričani, da želite spremeniti uporabnikov status?");
         const admin = e.target.dataset.admin;
         const newAdmin = admin !== "true";
-        console.log(newAdmin);
         if (confirm) {
             axios.put(`${backendAPIendpoint}/user/update/${id}`, {isadmin:newAdmin}, {withCredentials: true})
                 .then(res => {
@@ -93,7 +92,6 @@ const AdminAllUsers = () => {
         e.preventDefault();
         const prompt = window.prompt("Vnesite novo stanje uporabnika");
         const id = e.target.id;
-        console.log(prompt);
 
 
         if (prompt !== null && prompt !== "") {

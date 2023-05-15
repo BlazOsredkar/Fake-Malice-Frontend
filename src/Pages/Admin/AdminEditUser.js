@@ -43,10 +43,8 @@ const AdminEditUser = () => {
         axios.get(`${backendAPIendpoint}/user/find/${id}`, {withCredentials: true})
             .then(res => {
                 setUser(res.data);
-                console.log(res.data);
             })
             .catch(err => {
-                console.log(err);
             })
     }
 
@@ -85,8 +83,6 @@ const AdminEditUser = () => {
 
         axios.put(`${backendAPIendpoint}/user/update/${id}`, user, {withCredentials: true})
             .then(res => {
-                console.log(res);
-                console.log(res.data);
                 alert("Uporabnik uspešno urejen!")
                 navigate("/admin/user/all");
 
@@ -107,7 +103,6 @@ const AdminEditUser = () => {
 
             })
             .catch(err => {
-                console.log(err);
                 alert(err.response.data.message);
             })
     };
@@ -133,8 +128,6 @@ const AdminEditUser = () => {
                             <InputMask id="emso" mask="9999999999999" placeholder="EMŠO" name="emso" onChange={handleChange} value={user.emso} required />
 
                             <Dropdown value={user.spol} name="spol" onChange={handleChange} options={spoli} optionLabel="ime" placeholder="Spol" className="w-full md:w-14rem" />
-                            <Dropdown value={user.kraj?.id} name="kraj" onChange={handleChange} options={kraji.map(kraj => ({label: kraj.ime + ", " + kraj.postnaStevilka, value: kraj.id}))} placeholder="Kraj" className="w-full md:w-14rem" />
-
                             <Dropdown
                                 value={user.kraj?.id}
                                 name={"kraj"}
@@ -161,7 +154,6 @@ const AdminEditUser = () => {
                             <Dropdown value={user.razred?.id} name="razred" onChange={handleChange} options={razredi.map(razred => ({label: razred.ime, value: razred.id}))} placeholder="Razred" className="w-full md:w-14rem" />
 
                             <Calendar id="datumroj" name="datumroj" value={user.datumroj} onChange={handleChange}  showIcon />
-                            <InputText id="datumroj" value={user.datumroj} name="datumroj" type="date" placeholder="Datum rojstva" onChange={handleChange} required />
                         </div>
             </div>
 

@@ -27,7 +27,6 @@ const AdminEditSchool = () => {
                 setSchool(res.data);
             })
             .catch(err => {
-                console.log(err);
             })
     }
 
@@ -43,8 +42,6 @@ const AdminEditSchool = () => {
 
         axios.put(`${backendAPIendpoint}/school/update/${id}`, school, {withCredentials: true})
             .then(res => {
-                console.log(res);
-                console.log(res.data);
                 alert("Šola uspešno urejena!")
                 navigate("/admin/school/all");
 
@@ -55,7 +52,6 @@ const AdminEditSchool = () => {
 
             })
             .catch(err => {
-                console.log(err);
                 alert(err.response.data.message);
             })
     };

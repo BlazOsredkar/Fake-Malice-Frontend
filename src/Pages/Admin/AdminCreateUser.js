@@ -64,7 +64,6 @@ const AdminCreateUser = () => {
 
         })
             .catch(err => {
-                console.log(err);
                 try {
                     toast.error(err.response.data.message.join(""));
                 }catch (e) {

@@ -11,6 +11,9 @@ const KarticaMalica = ({ime, opis, slika, id, reload, selected, menuDate}) => {
   const user = useSelector(selectUser)
   const [nowDate, setDateNow] = React.useState(new Date());
   const [date, setDate] = React.useState(new Date());
+  const [uspelo, setUspelo] = React.useState(false);
+    const [neuspeh, setNeuspeh] = React.useState(false);
+
 
   const handleDeleteMeni = async () => {
 
@@ -36,6 +39,30 @@ const KarticaMalica = ({ime, opis, slika, id, reload, selected, menuDate}) => {
     }
   }
 
+  const handleChangeStanje = (e, id) => {
+    e.preventDefault();
+    const prompt = window.prompt("Vnesite nov opis menija", opis);
+
+    if (prompt !== null && prompt !== "") {
+      axios
+          .post(
+              `${backendAPIendpoint}/meni/update/`,
+              { id: Number(id), opis: prompt },
+              { withCredentials: true }
+          )
+          .then((res) => {
+            setUspelo(true);
+            toast.success("Stanje uspešno spremenjeno");
+            reload();
+          })
+          .catch((err) => {
+            setNeuspeh(true);
+            toast.error("Napaka pri spremembi stanja");
+          });
+    }
+  };
+
+
   useEffect(() => {
     const dateNow = new Date()
     dateNow.setHours(0,0,0,0);
@@ -52,8 +79,7 @@ const KarticaMalica = ({ime, opis, slika, id, reload, selected, menuDate}) => {
       <div className="karticaMalic">
         <div className="karticaMalica__gumb">
           {selected && !user.isadmin ? <button style={{backgroundColor: "green", cursor: "not-allowed"}} >Naročeno</button> : nowDate.getTime() !== date.getTime() && !user.isadmin ? <button onClick={handleNaroci}>Naroči</button> : null }
-          {user.isadmin ?  <button onClick={handleDeleteMeni}>Izbriši</button> : <> </>}
-          {user.isadmin ?  <button>Uredi</button> : <> </>}
+          {user.isadmin ? (opis === "Brez malice" ? null : <><button onClick={handleDeleteMeni}>Izbriši</button><button onClick={(e) => handleChangeStanje(e, id)}>Uredi</button></>) : null}
         </div>
         <div className="karticaMalica__slika">
           <img src={slika} alt="slika malice" height={150} />

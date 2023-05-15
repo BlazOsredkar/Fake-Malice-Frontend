@@ -38,14 +38,12 @@ const AdminCreateMeni = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        console.log(meni);
         axios.post(`${backendAPIendpoint}/meni/create`, meni, {withCredentials: true})
             .then(res => {
 
                     setMeni({
                         datum: "",
-                        vrstaMenija: "",
+                        vrstaMenija: 0,
                         opis: "",
                     }
 
@@ -97,23 +95,18 @@ const AdminCreateMeni = () => {
     }
     , []);
 
-    const notify = () => toast("Wow so easy!");
-
-
 
     return (
         <div className="admin-create-meni">
-            <div className="admin-create-meni-form">
-
-            <form onSubmit={handleSubmit}>
-                <Dropdown value={meni.vrstaMenija} onChange={(e) => handleChange(e, null, {name: "vrstaMenija", value: e.value})}
+            <form className="admin-create-meni-form" onSubmit={handleSubmit}>
+                <Dropdown value={meni.vrstaMenija} onChange={(e) => handleChange(e, {name: "vrstaMenija", value: e.value})}
                           options={vrstaMenija ? vrstaMenija.map((vm) => ({ label: vm.ime, value: vm.id })) : []}
-                          optionLabel="label" placeholder="Izberi Vrsto menija" />
-                <Calendar className={"admin-create-user-meni-input"}  id="date" name={"datum"} value={meni.datum} onChange={handleChange}  showIcon />
-                <InputText id="naslov" className={"admin-create-meni-form-input"} value={meni.opis} name="Opis" placeholder="Opis" onChange={handleChange} required/>
-                <Button className="submit-button" type="submit" className="submit">Potrdi</Button>
+                          optionLabel="label" name={'vrstaMenija'} placeholder="Izberi Vrsto menija" />
+
+                <Calendar   id="date" name={"datum"} value={meni.datum} onChange={handleChange}  showIcon />
+                <InputText id="naslov" value={meni.opis} name="opis" placeholder="Opis" onChange={handleChange} required/>
+                <Button type="submit" className="submit">Potrdi</Button>
             </form>
-            </div>
         </div>
     )
 }

@@ -25,7 +25,6 @@ const RequireAuth = () => {
             }
         }
         catch (e) {
-            console.log(e);
         }
         store.dispatch(setUserLoading(false));
     }

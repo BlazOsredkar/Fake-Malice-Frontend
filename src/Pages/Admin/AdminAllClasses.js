@@ -29,15 +29,6 @@ const AdminAllClasses = () => {
 
     }
 
-    const handleDelete = (id) => {
-
-    }
-
-      const handleUpdate = (id) => {
-
-      }
-
-
     useEffect(() => {
         getClasses();
     } ,[]);
@@ -50,8 +41,6 @@ const AdminAllClasses = () => {
                 <tr>
                     <th>ID</th>
                     <th>Ime</th>
-                    <th>Uredi</th>
-                    <th>Izbriši</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -59,8 +48,6 @@ const AdminAllClasses = () => {
                     <tr key={item.id}>
                         <td>{item.id}</td>
                         <td>{item.ime}</td>
-                        <td><button onClick={() => handleUpdate(item.id)}>Update</button></td>
-                        <td><button onClick={() => handleDelete(item.id)}>Delete</button></td>
                     </tr>
                 ))}
                 </tbody>
